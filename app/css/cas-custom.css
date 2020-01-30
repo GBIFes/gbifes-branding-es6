@@ -1,0 +1,15 @@
+.logo-brand > .brand-layout-control > .img-responsive {
+  content:url("https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png") !important;
+}
+
+/* TODO: this this in code */
+
+#main > div > div > ul.userdetails-menu + h3,
+#main > div > div > ul.userdetails-menu + h3 + div,
+#main > div > div > ul.userdetails-menu > li:nth-child(2),
+#main > div > div > ul.userdetails-menu > li:nth-child(4),
+#main > div > div > ul.userdetails-menu > li:nth-child(7),
+#main > div > div > ul.userdetails-menu > li:nth-child(8)
+{
+  display: none;
+}

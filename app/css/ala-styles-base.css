@@ -1,0 +1,102 @@
+/* Breadcrumb
+================================= */
+section#breadcrumb {
+display:none !important; 
+}
+
+#main { margin-top: 10px; }
+
+p.rowB .occurrenceLink { display:block; }
+p.rowA .eventAndLocation { float:right; }
+p.rowA .eventAndLocation .resultsLabel { padding-left: 8px;  }
+
+p.rowB .catalognumber:before{ content: ' '; display: block; }
+p.rowB .basisofrecord { float:right; }
+
+#speciesTabContent #exploreButtonsZone #downloadRecords { display: none; }
+
+.tab-content {
+    border-bottom: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+    border-left: 1px solid #ddd !important;
+}
+
+.dataResourceProviderLink { display:none; }
+
+#advancedSearchLink { padding-bottom: 5px; }
+
+.nav-collections #usage-stats { display: none; }
+
+#alertsButton { display:none; }
+
+.modal-dialog { width: 740px; }
+
+#taxaBox .speciesPageLink { display:none; }
+
+.breadcrumb-list { display:none; }
+
+.foot_block4 ul { width: 344px; }
+
+.filter-buttons div h2 a { padding-bottom:13px !important; }
+
+#headingBar { padding-top: 20px; }
+
+#charts { padding-top:0px !important;; margin-top:0px !important; }
+
+#cl2-chart-1 { width: 100%; }
+
+.btn-default {
+    -webkit-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+    -o-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+    transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+    display: inline-block;
+    text-align: center;
+    /* padding: 8px 18px 12px; */
+    background: none;
+    border: #36de97 solid 2px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    font-family: "Galano-Grotesque",  sans-serif;
+    font-size: 0.875em;
+    color: #36de97;
+    cursor: pointer;
+    text-decoration: none!important;
+    max-width: 100%;
+font-weight: 600;
+ne-height: 1;
+}
+
+.btn-default:hover {
+    text-decoration: none;
+    border-color: #36de97;
+    color: #fff;	
+    background-color: #36de97;
+}
+input[type=submit]:hover  {
+	background-color:white;
+}
+
+
+h1, h2, h3 {
+    font-family: "Galano-Grotesque",  sans-serif;
+    font-size: 35px;
+    color: #36de97;
+    font-weight: bold;
+
+}
+
+section#breadcrumb {
+   background-color: #FFF; 
+   font-weight:600;
+   font-size:0.875em;
+}
+
+section#breadcrumb li {
+
+padding-right: 15px;
+border-right: #f7f7f7 solid 2px;
+}
+
+#datasetTable tr#dataProvider { display: none !important; }
