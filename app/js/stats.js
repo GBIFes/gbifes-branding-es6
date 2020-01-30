@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var { locale } = require('./i18n_init');
+var gbifesjs = require('./settings').default;
 
 function loadStats(){
 
@@ -37,7 +38,7 @@ function addPeriods(nStr)
 }
 
 document.addEventListener("DOMContentLoaded",function(){
-  if (document.location.host === 'datos.gbif.es') {
+  if (document.location.host === 'datos.gbif.es' || gbifesjs.isDevel ) {
     loadStats();
   }
 });

@@ -11,8 +11,7 @@ const banner = fs.readFileSync('app/assets/banner.html', 'utf8');
 const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 // const indexEs = fs.readFileSync('assets/index.html', 'utf8');
 // const toReplace = [/\.js$/, /testPage\.html$/];
-const toReplaceTest = [/index\.html$/, /testPage\.html$/];
-const toReplaceProd = [/index\.html$/];
+const toReplace = [/index\.html$/, /testPage\.html$/];
 
 exports.files = {
   javascripts: {
@@ -42,24 +41,22 @@ exports.plugins = {
   },
   replacement: {
     replacements: [
-      { files: toReplaceTest, match: {find: 'HEADLO_HERE', replace: headlo}},
-      { files: toReplaceProd, match: {find: 'HEADER_HERE', replace: banner}},
-      { files: toReplaceTest, match: {find: 'BANNER_HERE', replace: banner}},
-      { files: toReplaceTest, match: {find: 'FOOTER_HERE', replace: footer}},
-      // { files: toReplaceTest, match: {find: 'INDEX_ES', replace: indexEs}},
-      { files: toReplaceTest, match: {find: '::containerClass::', replace: 'container'}},
-      { files: toReplaceTest, match: {find: '::headerFooterServer::', replace: 'http://localhost:3333/'}},
-      { files: toReplaceTest, match: {find: '::loginStatus::', replace: 'signedOut'}},
-      { files: toReplaceTest, match: {find: '::loginURL::', replace: 'https://auth.gbif.es/cas/login'}},
-      { files: toReplaceTest, match: {find: '::searchServer::', replace: 'https://especies.gbif.es'}},
-      { files: toReplaceTest, match: {find: '::searchPath::', replace: '/search'}}
+      { files: toReplace, match: {find: 'HEADLO_HERE', replace: headlo}},
+      { files: toReplace, match: {find: 'BANNER_HERE', replace: banner}},
+      { files: toReplace, match: {find: 'FOOTER_HERE', replace: footer}},
+      { files: toReplace, match: {find: '::containerClass::', replace: 'container'}},
+      { files: toReplace, match: {find: '::headerFooterServer::', replace: 'http://localhost:3333/'}},
+      { files: toReplace, match: {find: '::loginStatus::', replace: 'signedOut'}},
+      { files: toReplace, match: {find: '::loginURL::', replace: 'https://auth.gbif.es/cas/login'}},
+      { files: toReplace, match: {find: '::searchServer::', replace: 'https://especies.gbif.es'}},
+      { files: toReplace, match: {find: '::searchPath::', replace: '/search'}}
     ]
   }
 };
 
 exports.server = {
-  noPushState: true // returns 404 when not found
-  // indexPath: 'testTemplate.html'
+  noPushState: true // returns 404 when file not found
+  // indexPath: 'testPage.html'
 }
 
 // https://github.com/brunch/brunch/issues/1295
@@ -70,3 +67,5 @@ exports.npm = {
 exports.paths = {
   watched: ['app/js', 'app/css', 'app/assets']
 }
+
+// exports.optimize = true; // same like brunch build --production

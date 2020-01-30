@@ -293,8 +293,8 @@ require.register("js/i18n_menus.js", function(exports, require, module) {
 
 var $ = require('jquery');
 var gbifesjs = require('./settings').default;
-require('./jquery.i18n.properties');
 require('./jquery-eu-cookie-law-popup');
+require('./jquery.i18n.properties');
 
 var _require = require('./i18n_init'),
     locale = _require.locale,
@@ -384,19 +384,16 @@ function i18n_menus() {
       var keys = ['main_title_label', 'menu_portal_part1', 'menu_portal_part2', 'menu_home', 'menu_collections', 'menu_datasets', 'menu_search', 'menu_explore', 'menu_regions', 'top_menu_dataportal', 'footer_menu_about', 'footer_menu_biodiversity_data', 'footer_menu_collaborations', 'footer_menu_resources', 'footer_menu_news', 'footer_menu_training', 'footer_menu_software', 'footer_menu_contact', 'numbers_occurrences_label', 'numbers_datasets_label', 'numbers_institutions_label', 'numbers_species_label', 'lang_link_en', 'lang_link_es', 'lang_link_cat', 'footer_legal_info', 'search_input_advanced1', 'search_input_advanced2', 'sub_menu_collections', 'sub_menu_collections_detail', 'sub_menu_datasets', 'sub_menu_datasets_detail', 'sub_menu_explore', 'sub_menu_explore_detail', 'sub_menu_regions', 'sub_menu_regions_detail', 'footer_legal_code', 'banner_search_input_placeholder', 'main_search_input_placeholder', 'auth_bar_login', 'auth_bar_logout', 'auth_bar_signup', 'auth_bar_myprofile', 'autocompleteHeader_placeholder'];
 
       for (var _i = 0; _i < keys.length; _i++) {
-        if ($('#' + keys[_i]).length > 0) {
-          // Only if element exists
-          var trans = jQuery.i18n.prop(keys[_i]);
-          if (gbifesjs.isDevel) console.log('i18n of ' + keys[_i] + ': ' + trans);
-          if (typeof trans !== 'undefined') {
-            if (endsWith(keys[_i], '_placeholder')) {
-              var elementID = keys[_i].substring(0, keys[_i].length - 12);
-              // verify that this element exists
-              $('#' + elementID) && $('#' + elementID).attr('placeholder', trans);
-            } else {
-              // verify that this element exists
-              $('#' + keys[_i]) && $('#' + keys[_i]).html(trans);
-            }
+        var trans = jQuery.i18n.prop(keys[_i]);
+        if (gbifesjs.isDevel) console.log('i18n of ' + keys[_i] + ': ' + trans);
+        if (typeof trans !== 'undefined') {
+          if (endsWith(keys[_i], '_placeholder')) {
+            var elementID = keys[_i].substring(0, keys[_i].length - 12);
+            // verify that this element exists
+            $('#' + elementID) && $('#' + elementID).attr('placeholder', trans);
+          } else {
+            // verify that this element exists
+            $('#' + keys[_i]) && $('#' + keys[_i]).html(trans);
           }
         }
       }
@@ -1274,6 +1271,8 @@ var $ = require('jquery');
 var _require = require('./i18n_init'),
     locale = _require.locale;
 
+var gbifesjs = require('./settings').default;
+
 function loadStats() {
 
   $.getJSON("https://registros-ws.gbif.es/occurrences/search?pageSize=0", function (data) {
@@ -1308,7 +1307,7 @@ function addPeriods(nStr) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.location.host === 'datos.gbif.es') {
+  if (document.location.host === 'datos.gbif.es' || gbifesjs.isDevel) {
     loadStats();
   }
 });

@@ -5288,10 +5288,17 @@ button.search-icon {
   padding-right: 15px;
 }
 
+
 #wrapper-navbar .search-trigger, #wrapper-navbar .account-mobile, #wrapper-navbar .search-submit {
-  /* color: red; */
   margin: .25rem .5rem;
   padding: 2px 0;
   background-color: transparent;
   border: none;
+}
+#wrapper-navbar .navbar {
+  background-color: transparent !important;
+}
+
+#wrapper-navbar .navbar i {
+  color: #3a67a1;
 }

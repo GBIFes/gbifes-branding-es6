@@ -4,15 +4,15 @@
 
 var $ = require('jquery');
 var gbifesjs = require('./settings').default;
-require('./jquery.i18n.properties');
 require('./jquery-eu-cookie-law-popup');
+require('./jquery.i18n.properties');
 
 var { locale, enabledLangs } = require('./i18n_init');
 
 // IE don't have String.endsWith
 // https://stackoverflow.com/a/2548133/642847
 function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 
 function i18n_menus() {
@@ -137,19 +137,16 @@ function i18n_menus() {
       ];
 
       for (let i = 0; i < keys.length; i++) {
-        if ($(`#${keys[i]}`).length > 0) {
-          // Only if element exists
-          const trans = jQuery.i18n.prop(keys[i]);
-          if (gbifesjs.isDevel) console.log(`i18n of ${keys[i]}: ${trans}`);
-          if (typeof trans !== 'undefined') {
-            if (endsWith(keys[i], '_placeholder')) {
-              const elementID = keys[i].substring(0, keys[i].length - 12);
-              // verify that this element exists
-              $(`#${elementID}`) && $(`#${elementID}`).attr('placeholder', trans);
-            } else {
-              // verify that this element exists
-              $(`#${keys[i]}`) && $(`#${keys[i]}`).html(trans);
-            }
+        const trans = jQuery.i18n.prop(keys[i]);
+        if (gbifesjs.isDevel) console.log(`i18n of ${keys[i]}: ${trans}`);
+        if (typeof trans !== 'undefined') {
+          if (endsWith(keys[i], '_placeholder')) {
+            const elementID = keys[i].substring(0, keys[i].length - 12);
+            // verify that this element exists
+            $(`#${elementID}`) && $(`#${elementID}`).attr('placeholder', trans);
+          } else {
+            // verify that this element exists
+            $(`#${keys[i]}`) && $(`#${keys[i]}`).html(trans);
           }
         }
       }
