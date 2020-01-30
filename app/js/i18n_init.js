@@ -1,6 +1,6 @@
 var Url = require('domurl');
 var Cookies = require('js-cookie');
-var gbifesjs = require('./settings');
+var gbifesjs = require('./settings').default;
 
 // import "./navigator-languages-parser.js";
 // For some reason the import fails so copied here:

@@ -212,125 +212,83 @@
 </header>
 <!-- .site-header -->
 
-<!-- main content -->
-<div id="content" class="site-content">
-  <div id="primary" class="content-area parent_homepage">
-    <main id="main" class="site-main">
-      <div class="page_header primarygreen" style="background-image: url(https://datos.gbif.es/images/Banner_Portal_no_text.png)">
-	<h1 id="main_title_label"></h1>
-      </div>
-      <section class="banner_numbers container">
-	<div class="buscador">
-	  <div class="container">
-	    <form action="https://registros.gbif.es/advancedSearch" method="get">
-	      <a class="hiddenmobile"
-			id="advanced_search_link"
-			href="https://registros.gbif.es/#tab_advanceSearch">
-		<span id="search_input_advanced1">Búsqueda</span><br/>
-		<span id="search_input_advanced2">Avanzada</span>
-	      </a>
-	      <input type="search" id="main_search_input"
-			   placeholder=""
-			   name="text">
-	      <input type="submit" name="submit" class="search-submit" id="main_search_submit">
-	    </form>
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <ul class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Who we are</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div id="INSERT_CONTENT_ID_HERE" class="container">
+    <section class="content-container">
+        <div class="row">
+            <article class="col-md-12 header-wrap margin-bottom-half-1">
+                <h5 class="subject-category-overline">Knowledge Base</h5>
+                <h2 class="subject-title">Who we are</h2>
+                <h3 class="subject-subtitle">The Atlas of Living Australia (ALA) provides free, online access to
+                    information about Australia’s amazing biodiversity. It is collaborative, open infrastructure that
+                    pulls together biodiversity data from multiple sources, and makes it accessible and reusable.</h3>
+            </article>
 
-	  </div>
-	</div>
-	<div class="numbers_box">
-	  <h4 class="text"></h4>
-	  <div class="numbers">
-	    <div class="number">
-	      <div class="number_nro" >
-		<a href="https://registros.gbif.es/occurrences/search" id="number_registros" style="text-decoration:none;" class="portal-link loading_stats">
-		  25.930.000
-		</a>
-	      </div>
-	      <div class="number_text" id="numbers_occurrences_label">registros</div>
-	    </div>
-	    <div class="number">
-	      <div class="number_nro">
-		<a href="https://colecciones.gbif.es/datasets" id="number_bases" style="text-decoration:none;"  class="portal-link loading_stats">
-		  290
-		</a>
-	      </div>
-	      <div class="number_text" id="numbers_datasets_label">bases de datos</div>
-	    </div>
-	    <div class="number">
-	      <div class="number_nro">
-		<a href="https://colecciones.gbif.es" id="number_instituciones" style="text-decoration:none;"  class="portal-link loading_stats">
-		  90
-		</a>
-	      </div>
-	      <div class="number_text" id="numbers_institutions_label">instituciones</div>
-	    </div>
-	    <div class="number">
-	      <div class="number_nro">
-		<a href="https://especies.gbif.es" id="number_species" style="text-decoration:none;"  class="portal-link loading_stats">
-		  110.000
-		</a>
-	      </div>
-	      <div class="number_text" id="numbers_species_label">especies</div>
-	    </div>
-	  </div>
-	</div>
-      </section>
-      <section class="franja_verde">
-	<div class="container">
-	  <div class="row fv_list">
-	    <div class="col-sm-3 fv_item">
-	      <a class="enlace portal-link " href="https://colecciones.gbif.es" target="_self">
-		<figure>
-		  <img src="images/Bandeja.svg" alt="Comparte" class="style-svg">
-		</figure>
-		<h3 id="sub_menu_collections">Instituciones, colecciones y proyectos</h3>
-		<p id="sub_menu_collections_detail">Consulta información de todas las
-		  entidades españolas que publican
-		  datos en GBIF
-		</p>
-	      </a>
-	    </div>
-	    <div class="col-sm-3 fv_item">
-	      <a class="enlace portal-link " href="https://colecciones.gbif.es/datasets" target="_self">
-		<figure>
-		  <img src="images/Etiqueta.svg" alt="Explora" class="style-svg">
-		</figure>
-		<h3 id="sub_menu_datasets">Juegos de datos</h3>
-		<p id="sub_menu_datasets_detail">Accede a todas las bases de datos
-		  de biodiversidad compartidas a
-		  través de GBIF.es
-		</p>
-	      </a>
-	    </div>
-	    <div class="col-sm-3 fv_item">
-	      <a class="enlace portal-link " href="https://registros.gbif.es/explore/your-area" target="_self">
-		<figure>
-		  <img src="images/Prismaticos.svg" alt="Gestiona" class="style-svg">
-		</figure>
-		<h3 id="sub_menu_explore">Explora tu área</h3>
-		<p id="sub_menu_explore_detail"> Localiza y consulta las
-		  especies que te rodean
-		</p>
-	      </a>
-	    </div>
-	    <div class="col-sm-3 fv_item">
-	      <a class="enlace portal-link" href="https://regiones.gbif.es" target="_self">
-		<figure>
-		  <img src="images/Globo.svg" alt="Regiones" class="style-svg">
-		</figure>
-		<h3 id="sub_menu_regions">Regiones</h3>
-		<p id="sub_menu_regions_detail">Explora las especies
-		  includidas en un
-		  determinado territorio
-		  parque natural, área marina
-		</p>
-	      </a>
-	    </div>
-	  </div>
-	</div>
-      </section>
-    </main>
-  </div>
+            <article class="col-md-12" id="alaEditable">
+                <!-- Start editable content -->
+                <div class="col-md-3 col-md-push-9 sidebar-col" id="toc-wrapper">
+                    <div id="toc_container" class="no_bullets toc-floating-menu affix-bottom" data-spy="affix"
+                         data-offset-top="300"
+                         style="width: 245px; top: -264.5px;"><h4>Page contents:</h4>
+                        <div class="profile-usermenu margin-bottom-2">
+                            <ul class="toc_list nav">
+                                <li><a href="#Introduction">Introduction</a></li>
+                                <li><a href="#Our_mission">Our mission</a></li>
+                                <li><a href="#Our_focus">Our focus</a></li>
+                                <li><a href="#Our_users">Our users</a></li>
+                                <li><a href="#Our_impact">Our impact</a></li>
+                                <li><a href="#Governance">Governance</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="alaInnerEditable" class="col-md-8 col-md-pull-3" style="padding-left: 0px;"><h4 id="intro">
+                    <span id="Introduction">Introduction</span></h4>
+                    <p>The ALA&nbsp;is Australia’s national biodiversity database. Founded on the principle of data
+                        sharing – collect it once, share it, use it many times – the ALA provides free, online access to&nbsp;millions
+                        of&nbsp;occurrence records&nbsp;to form&nbsp;the most&nbsp;comprehensive and accessible data set
+                        on Australia’s biodiversity ever produced.&nbsp; &nbsp;</p>
+                    <p>By aggregating biodiversity information and making it more available online, the ALA is assisting
+                        scientists, planners, managers and others to create a more detailed picture of Australia’s
+                        biodiversity.&nbsp;The ALA is used for research, environmental monitoring, conservation planning
+                        and management, education, and citizen science activities.</p><h4><span id="Our_mission">Our mission</span>
+                    </h4>
+                    <p>To lead the digital transformation of Australia’s biodiversity knowledge, promoting excellence
+                        and enabling collaboration in biodiversity research.</p><h4><span
+                            id="Our_focus">Our focus</span></h4>
+                    <p>The ALA pulls together two basic types of information about Australia’s living things: species
+                        and environments. We create tools for our users to share and analyse this data in different
+                        ways.</p>
+                    <p>We are committed to the principles of open data and infrastructure.</p><h4><span id="Our_users">Our users</span>
+                    </h4>
+                    <p>The ALA&nbsp;supports a wide range of users across a number of fields.&nbsp;We support research,
+                        environmental monitoring, conservation planning, education, and citizen science just to name a
+                        few.&nbsp;</p>
+                    <p>We create tools to help users capture, share and interrogate biodiversity information in
+                        increasingly efficient ways.</p><h4><span id="Our_impact">Our impact</span></h4>
+                    <p>By enabling science, industry and&nbsp;decision makers to work more efficiently, we impact many
+                        diverse areas of Australian biodiversity research and sustainability practice.</p>
+                    <p>We are an essential resource for biodiversity conservation, sustainable ecosystem development,
+                        new species discoveries, systematics (relationships between living things), taxonomy (naming and
+                        classification), digitisation of biological collections, natural resource management and
+                        environmental impact assessments.</p><h4><span id="Governance">Governance</span></h4>
+                    <p>The ALA is made possible thanks to contributions from our many partners. The ALA&nbsp;receives
+                        support&nbsp;from the Australian Government through the National Collaborative Research
+                        Infrastructure Strategy (NCRIS) and is hosted by CSIRO. It is a node of the Global Biodiversity
+                        Infrastructure Facility (GBIF).</p></div>
+                <!-- End editable content -->
+            </article>
+        </div>
+    </section>
 </div>
 <!-- Footer -->
 <footer id="colophon" class="site-footer">
@@ -412,37 +370,4 @@
 <!-- End footer -->
 
 </body>
-<style>
-  #site-menu {
-    border-bottom: none !important;
-  }
-
-  #main_search_input {
-    width: 100%;
-    line-height: 1em;
-    top: 55%;
-  }
-  #main_search_submit {
-    top: 58%;
-  }
-  #advanced_search_link {
-    color: black;
-    font-weight: bold;
-    float:right;
-    position:relative;
-    margin-right: 100px;
-    top:100px;
-  }
-  .loading_stats {
-    color:#aaa;
-    text-decoration:none;
-  }
-  .loaded_stats {
-    color:#36de97;
-    text-decoration:none;
-    transition-delay: 0.5s;
-  }
-  .parent_homepage .franja_verde { padding-top: 90px; }
-  .fv_item { margin-top: 20px;}
-</style>
 </html>

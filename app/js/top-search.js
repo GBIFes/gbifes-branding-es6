@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var gbifesjs = require('./settings');
+var gbifesjs = require('./settings').default;
 
 var enableBieSearch = () => {
   // if (document.location.host !== 'localhost:3002') {

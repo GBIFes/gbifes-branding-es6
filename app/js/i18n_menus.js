@@ -3,8 +3,7 @@
  */
 
 var $ = require('jquery');
-var gbifesjs = require('./settings');
-
+var gbifesjs = require('./settings').default;
 require('./jquery.i18n.properties');
 require('./jquery-eu-cookie-law-popup');
 
@@ -138,7 +137,7 @@ function i18n_menus() {
       ];
 
       for (let i = 0; i < keys.length; i++) {
-        if ($(`#${key[i]}`).length > 0) {
+        if ($(`#${keys[i]}`).length > 0) {
           // Only if element exists
           const trans = jQuery.i18n.prop(keys[i]);
           if (gbifesjs.isDevel) console.log(`i18n of ${keys[i]}: ${trans}`);
@@ -181,7 +180,7 @@ function i18n_menus() {
 $(function() {
   // wait til gbif.es elements are visible
   var checkExist = setInterval(function() {
-    if ($('#main_title_label').length) {
+    if ($('#menu_home').length) {
       console.log("gbif_es_elements loaded");
       clearInterval(checkExist);
       i18n_menus();

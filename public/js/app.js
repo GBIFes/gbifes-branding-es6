@@ -191,7 +191,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Url = require('domurl');
 var Cookies = require('js-cookie');
-var gbifesjs = require('./settings');
+var gbifesjs = require('./settings').default;
 
 // import "./navigator-languages-parser.js";
 // For some reason the import fails so copied here:
@@ -292,8 +292,7 @@ require.register("js/i18n_menus.js", function(exports, require, module) {
  */
 
 var $ = require('jquery');
-var gbifesjs = require('./settings');
-
+var gbifesjs = require('./settings').default;
 require('./jquery.i18n.properties');
 require('./jquery-eu-cookie-law-popup');
 
@@ -385,7 +384,7 @@ function i18n_menus() {
       var keys = ['main_title_label', 'menu_portal_part1', 'menu_portal_part2', 'menu_home', 'menu_collections', 'menu_datasets', 'menu_search', 'menu_explore', 'menu_regions', 'top_menu_dataportal', 'footer_menu_about', 'footer_menu_biodiversity_data', 'footer_menu_collaborations', 'footer_menu_resources', 'footer_menu_news', 'footer_menu_training', 'footer_menu_software', 'footer_menu_contact', 'numbers_occurrences_label', 'numbers_datasets_label', 'numbers_institutions_label', 'numbers_species_label', 'lang_link_en', 'lang_link_es', 'lang_link_cat', 'footer_legal_info', 'search_input_advanced1', 'search_input_advanced2', 'sub_menu_collections', 'sub_menu_collections_detail', 'sub_menu_datasets', 'sub_menu_datasets_detail', 'sub_menu_explore', 'sub_menu_explore_detail', 'sub_menu_regions', 'sub_menu_regions_detail', 'footer_legal_code', 'banner_search_input_placeholder', 'main_search_input_placeholder', 'auth_bar_login', 'auth_bar_logout', 'auth_bar_signup', 'auth_bar_myprofile', 'autocompleteHeader_placeholder'];
 
       for (var _i = 0; _i < keys.length; _i++) {
-        if ($('#' + key[_i]).length > 0) {
+        if ($('#' + keys[_i]).length > 0) {
           // Only if element exists
           var trans = jQuery.i18n.prop(keys[_i]);
           if (gbifesjs.isDevel) console.log('i18n of ' + keys[_i] + ': ' + trans);
@@ -428,7 +427,7 @@ function i18n_menus() {
 $(function () {
   // wait til gbif.es elements are visible
   var checkExist = setInterval(function () {
-    if ($('#main_title_label').length) {
+    if ($('#menu_home').length) {
       console.log("gbif_es_elements loaded");
       clearInterval(checkExist);
       i18n_menus();
@@ -442,7 +441,7 @@ $(function () {
 require.register("js/init.js", function(exports, require, module) {
 'use strict';
 
-require('./settings.js');
+require('./settings.js').default;
 require('./i18n_init.js');
 require('./top-search.js');
 require('./collectory.js');
@@ -1319,7 +1318,7 @@ require.register("js/top-search.js", function(exports, require, module) {
 'use strict';
 
 var $ = require('jquery');
-var gbifesjs = require('./settings');
+var gbifesjs = require('./settings').default;
 
 var enableBieSearch = function enableBieSearch() {
   // if (document.location.host !== 'localhost:3002') {

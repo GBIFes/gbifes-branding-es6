@@ -16,6 +16,7 @@
     "brunch": "^2",
     "clean-css-brunch": "^2",
     "copycat-brunch": "^1.1.1",
+    "fs": "^0.0.1-security",
     "replacement-brunch": "^2.0.5",
     "uglify-js-brunch": "^2"
   },

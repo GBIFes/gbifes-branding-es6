@@ -1,0 +1,184 @@
+<script type="text/html" id="autoCompleteTemplate">
+  <li class="autocomplete-item striped">
+    <div class="content-spacing">
+      <div class="autocomplete-heading">
+        <% if (commonNameMatches.length > 0) { %>
+        <%=commonNameMatches[0]%>
+        <% } else if (scientificNameMatches.length > 0) { %>
+        <%=scientificNameMatches[0]%>
+        <% } else { %>
+        <%=matchedNames[0]%>
+        <% } %>
+      </div>
+    </div>
+  </li>
+</script>
+<header id="masthead" class="site-header">
+  <div id="topheader" class="container">
+    <div id="navbarOuterWrapper" class="outer-nav-wrapper collapse navbar-collapse">
+      <div class="top-bar hidden-xs hidden-sm">
+        <div class="account ::loginStatus::">
+          <a href="https://auth.gbif.es/userdetails/registration/createAccount" id="auth_bar_signup"
+             class="btn btn-outline-white btn-sm signUpBtn" role="button"></a>
+          <a href="https://auth.gbif.es/userdetails/myprofile/" id="auth_bar_myprofile"
+             class="btn btn-outline-white btn-sm myProfileBtn" role="button"></a>
+          <a href="::loginURL::" class="btn btn-outline-white btn-sm loginBtn" id="auth_bar_login"></a>
+          <a href="https://auth.gbif.es/cas/logout" class="btn btn-outline-white btn-sm logoutBtn" role="button" id="auth_bar_logout"></a>
+          <button id="top-search-icon-button-big" class="search-icon search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
+                  data-toggle="collapse"
+                  data-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
+            <i class="fas fa-search"></i>
+            <span class="collapse visible-on-show" aria-hidden="true" title="Close">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="navbarSmallOuterWrapper" class="display-flex ::loginStatus::">
+      <a href="::loginURL::" role="button" class="account-mobile hidden-md hidden-lg loginBtn mobile-login-btn"
+         title="Login button">
+        <i class="fas fa-sign-in"></i>
+      </a>
+      <a href="https://auth.gbif.es/userdetails/myprofile/" role="button"
+         class="account-mobile hidden-md hidden-lg myProfileBtn" title="My Account">
+        <i class="fas fa-user"></i>
+      </a>
+      <a href="https://auth.gbif.es/cas/logout" role="button"
+         class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Logout link">
+        <i class="fas fa-sign-out"></i>
+      </a>
+      <button id="top-search-icon-button-small" class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button search-icon" title="Open search dialog"
+              data-toggle="collapse" data-target="#autocompleteSearchALA"
+              onclick="focusOnClickSearchButton()">
+        <i class="fas fa-search"></i>
+        <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
+      </button>
+      <button class="navbar-toggle collapsed collapse-trigger-button" type="button"
+              data-toggle="collapse" data-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <div class="horizontal-line"></div>
+        <div class="horizontal-line"></div>
+        <div class="horizontal-line"></div>
+        <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="site-branding">
+      <a href="https://www.gbif.es" title="GBIF.ES" id="site_logo" >
+        <img src="https://www.gbif.es/wp-content/uploads/2017/05/gbif-logo.svg" alt="GBIF.ES" />
+      </a>
+    </div>
+    <!-- .site-branding -->
+    <div class="head-links">
+      <ul>
+        <li><a href="http://datos.gbif.es/" target="_blank" class="arrow-link" id="top_menu_dataportal"></a></li>
+        <li><a href="http://ipt.gbif.es/" target="_blank" class="arrow-link">IPT</a></li>
+        <li><a href="https://natusfera.gbif.es/" target="_blank" class="arrow-link">Natusfera</a></li>
+        <li><a href="http://elearning.gbif.es/" target="_blank" class="arrow-link">eLearning</a></li>
+        <li><a href="https://www.gbif.org/" target="_blank" class="arrow-link">GBIF.ORG</a></li>
+        <li><a href="https://twitter.com/GbifEs" target="_blank" class="twitter-link"><i class="fa fa-twitter" aria-hidden="true"></i> @GbifEs</a></li>
+      </ul>
+    </div>
+    <!-- .head-links -->
+    <div class="searchbox hide">
+      <form role="search" method="get" class="search-form" action="https://www.gbif.es/">
+        <label>
+          <span class="screen-reader-text">Buscar:</span>
+          <input type="search" class="search-field" id="banner_search_input" placeholder="" value="" name="s" />
+        </label>
+        <input type="submit" class="search-submit" value="Buscar" />
+      </form>
+      <!-- <span class="flechaup"></span> -->
+    </div>
+    <!-- searchbox -->
+
+    <div class="langbox">
+      <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
+        <ul>
+          <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
+            <a class="ca-locale-link" href=""><span class="wpml-ls-display lang_link_ca">CA</span></a>
+          </li>
+          <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-item-legacy-list-horizontal">
+            <a class="en-locale-link" href=""><span class="wpml-ls-display lang_link_en">EN</span></a>
+          </li>
+          <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-es wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+            <a class="es-locale-link" href=""><span class="wpml-ls-native lang_link_es">ES</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- .langbox -->
+  </div>
+  <!-- #topheader.container -->
+  <div id="site-menu">
+
+    <nav class="navbar navbar-default no-touch">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1"
+                aria-expanded="false">
+          <span class="sr-only">Mostrar/Ocultar menú</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div id="bs-navbar-collapse-1" class="collapse navbar-collapse">
+        <div class="menu-principal-container">
+          <ul id="menu-principal" class="navbar-nav">
+            <li id="menu-item-290" class="menu-item hidemobile" style="text-align:left; color:#3a67a1; font-weight: bold; padding-right:20px;padding-left:30px; padding-bottom:0px;">
+              <span id="menu_portal_part1">Portal Nacional</span><br/>
+              <span id="menu_portal_part2">de Datos de Biodiversidad</span>
+            </li>
+            <li class="menu-item top-nav-menu"><a href="http://datos.gbif.es" id="menu_home"></a></li>
+            <li class="menu-item top-nav-menu"><a href="http://colecciones.gbif.es" id="menu_collections">  </a></li>
+            <li class="menu-item top-nav-menu"><a href="http://colecciones.gbif.es/datasets" id="menu_datasets"> </a></li>
+            <li class="menu-item top-nav-menu"><a href="http://registros.gbif.es" id="menu_search"> </a></li>
+            <li class="menu-item top-nav-menu"><a href="http://registros.gbif.es/explore/your-area/" id="menu_explore"> </a></li>
+            <li class="menu-item top-nav-menu"><a href="http://regiones.gbif.es" id="menu_regions"> </a></li>
+          </ul>
+        </div>
+        <div class="head-links-responsive">
+          <ul>
+            <li><a href="http://datos.gbif.es/" target="_blank" class="arrow-link">Portal de datos</a></li>
+            <li><a href="http://ipt.gbif.es/" target="_blank" class="arrow-link">IPT</a></li>
+            <li><a href="https://natusfera.gbif.es/" target="_blank" class="arrow-link">Natusfera</a></li>
+            <li><a href="http://elearning.gbif.es/" target="_blank" class="arrow-link">eLearning</a></li>
+            <li><a href="https://www.gbif.org/" target="_blank" class="arrow-link">GBIF.ORG</a></li>
+            <li><a href="https://twitter.com/GbifEs" target="_blank" class="twitter-link"><i class="fa fa-twitter" aria-hidden="true"></i> @GbifEs</a></li>
+          </ul>
+        </div><!-- .head-links -->
+
+
+      </div><!-- /.navbar-collapse -->
+    </nav><!-- .navbar -->
+
+  </div> <!-- site-menu -->
+
+  <div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite">
+    <a class="skip-link sr-only sr-only-focusable" href="#INSERT_CONTENT_ID_HERE">Skip to content</a>
+
+    <nav class="navbar navbar-expand-md auth-nav">
+      <div class="::containerClass:: header-logo-menu">
+        <!-- Your site title as branding in the menu -->
+
+
+
+      </div><!-- .container -->
+      <div class="::containerClass::">
+        <div id="autocompleteSearchALA" class="collapse">
+          <form method="get" action="::searchServer::::searchPath::" class="search-form">
+            <div class="space-between">
+              <input id="autocompleteHeader" type="text" name="q"
+                     placeholder="Search species, datasets, and more..." class="search-input"
+                     autocomplete="off"/>
+              <button id="top-search-icon-button" class="search-submit search-icon" title="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav><!-- .auth-navigation -->
+  </div> <!-- wrapper-nav -->
+
+</header>
+<!-- .site-header -->

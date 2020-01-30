@@ -1,4 +1,19 @@
 // See http://brunch.io for documentation.
+
+// For a different structure than /app/ see:
+// https://github.com/brunch/brunch/issues/1676
+
+const fs = require('fs');
+
+const header = fs.readFileSync('app/assets/head.html', 'utf8');
+const headlo = fs.readFileSync('app/assets/headLocal.html', 'utf8');
+const banner = fs.readFileSync('app/assets/banner.html', 'utf8');
+const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
+// const indexEs = fs.readFileSync('assets/index.html', 'utf8');
+// const toReplace = [/\.js$/, /testPage\.html$/];
+const toReplaceTest = [/index\.html$/, /testPage\.html$/];
+const toReplaceProd = [/index\.html$/];
+
 exports.files = {
   javascripts: {
     joinTo: {
@@ -24,6 +39,21 @@ exports.plugins = {
     'fonts': 'commonui-bs3-2019/build/fonts/',
     verbose : true, //shows each file that is copied to the destination directory
     onlyChanged: true //only copy a file if it's modified time has changed (only effective when using brunch watch)
+  },
+  replacement: {
+    replacements: [
+      { files: toReplaceTest, match: {find: 'HEADLO_HERE', replace: headlo}},
+      { files: toReplaceProd, match: {find: 'HEADER_HERE', replace: banner}},
+      { files: toReplaceTest, match: {find: 'BANNER_HERE', replace: banner}},
+      { files: toReplaceTest, match: {find: 'FOOTER_HERE', replace: footer}},
+      // { files: toReplaceTest, match: {find: 'INDEX_ES', replace: indexEs}},
+      { files: toReplaceTest, match: {find: '::containerClass::', replace: 'container'}},
+      { files: toReplaceTest, match: {find: '::headerFooterServer::', replace: 'http://localhost:3333/'}},
+      { files: toReplaceTest, match: {find: '::loginStatus::', replace: 'signedOut'}},
+      { files: toReplaceTest, match: {find: '::loginURL::', replace: 'https://auth.gbif.es/cas/login'}},
+      { files: toReplaceTest, match: {find: '::searchServer::', replace: 'https://especies.gbif.es'}},
+      { files: toReplaceTest, match: {find: '::searchPath::', replace: '/search'}}
+    ]
   }
 };
 

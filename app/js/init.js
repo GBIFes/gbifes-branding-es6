@@ -1,4 +1,4 @@
-require('./settings.js');
+require('./settings.js').default;
 require('./i18n_init.js');
 require('./top-search.js');
 require('./collectory.js');
