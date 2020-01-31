@@ -4,6 +4,7 @@
 
 var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
+require('./jquery.i18n.properties.gbif');
 var { locale } = require('./i18n_init');
 var enabledLangs = gbifesjs.enabledLangs;
 
@@ -73,10 +74,11 @@ function i18n_menus() {
   const path = `::headerFooterServer::/i18n/`;
 
   if (gbifesjs.isDevel) console.log(`localePath: ${path}`);
-  if (typeof jQuery.i18n === 'undefined') console.warn('jQuery.i18n not yet loaded');
+  if (typeof i18n === 'undefined') console.warn('i18n not yet loaded');
 
+  const i18n = $.i18nGbif;
   // https://github.com/jquery-i18n-properties/jquery-i18n-properties
-  jQuery.i18n.properties({
+  i18n.properties({
     name: 'messages',
     path: path,
     mode: 'map',
@@ -135,7 +137,7 @@ function i18n_menus() {
       ];
 
       for (let i = 0; i < keys.length; i++) {
-        const trans = jQuery.i18n.prop(keys[i]);
+        const trans = i18n.prop(keys[i]);
         if (gbifesjs.isDevel) console.log(`i18n of ${keys[i]}: ${trans}`);
         if (typeof trans !== 'undefined') {
           if (endsWith(keys[i], '_placeholder')) {
@@ -155,9 +157,9 @@ function i18n_menus() {
         colorStyle : 'gbif',
         compactStyle : true,
         popupTitle : '',
-        popupText : jQuery.i18n.prop('cookie_message'),
-        buttonContinueTitle : jQuery.i18n.prop('cookie_accept_btn'),
-        buttonLearnmoreTitle :jQuery.i18n.prop('cookie_policy_btn'),
+        popupText : i18n.prop('cookie_message'),
+        buttonContinueTitle : i18n.prop('cookie_accept_btn'),
+        buttonLearnmoreTitle :i18n.prop('cookie_policy_btn'),
         buttonLearnmoreOpenInNewWindow : true,
         agreementExpiresInDays : 30,
         autoAcceptCookiePolicy : false,
@@ -168,14 +170,10 @@ function i18n_menus() {
 }
 
 // Warn, with min version fails so we load here
-/* $.getScript('/js/jquery.i18n.properties.min.js', function() {
- *   console.log('$.i18n loaded.');
- * });
- *  */
 $(function() {
   // wait til gbif.es elements are visible
   var checkExist = setInterval(function() {
-    if ($('#menu_home').length) {
+    if (window.jQuery && $('#menu_home').length && typeof $.i18nGbif !== 'undefined') {
       console.log("gbif_es_elements loaded");
       clearInterval(checkExist);
       i18n_menus();

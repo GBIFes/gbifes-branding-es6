@@ -8,18 +8,20 @@
  * @url         https://github.com/jquery-i18n-properties/jquery-i18n-properties
  * @inspiration Localisation assistance for jQuery (http://keith-wood.name/localisation.html)
  *              by Keith Wood (kbwood{at}iinet.com.au) June 2007
+ * Modified for gbif.es so is independent for jquery.i18n loaded by ALA modules so can be used
+ * without collisions
  *
  *****************************************************************************/
 
 (function ($) {
 
-    $.i18n = {};
+    $.i18nGbif = {};
 
     /**
      * Map holding bundle keys if mode is 'map' or 'both'. Values of this can also be an
      * Object, in which case the key is a namespace.
      */
-    $.i18n.map = {};
+    $.i18nGbif.map = {};
 
     var debug = function (message) {
         window.console && console.log('i18n::' + message);
@@ -39,7 +41,7 @@
      *      number of sites, such as: http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
      *
      * Sample usage for a bundles/Messages.properties bundle:
-     * $.i18n.properties({
+     * $.i18nGbif.properties({
      *      name:      'Messages',
      *      language:  'en_US',
      *      path:      'bundles'
@@ -53,7 +55,7 @@
      * @param  encoding  (string, optional) the encoding to request for bundles. Property file resource bundles are specified to be in ISO-8859-1 format. Defaults to UTF-8 for backward compatibility.
      * @param  callback     (function, optional) callback function to be called after script is terminated
      */
-    $.i18n.properties = function (settings) {
+    $.i18nGbif.properties = function (settings) {
 
         var defaults = {
             name: 'Messages',
@@ -73,7 +75,7 @@
         if (settings.namespace && typeof settings.namespace == 'string') {
             // A namespace has been supplied, initialise it.
             if (settings.namespace.match(/^[a-z]*$/)) {
-                $.i18n.map[settings.namespace] = {};
+                $.i18nGbif.map[settings.namespace] = {};
             } else {
                 debug('Namespaces can only be lower case letters, a - z');
                 settings.namespace = null;
@@ -84,7 +86,7 @@
         if (!settings.path.match(/\/$/)) settings.path += '/';
 
         // Try to ensure that we have at a least a two letter language code
-        settings.language = $.i18n.normaliseLanguageCode(settings);
+        settings.language = $.i18nGbif.normaliseLanguageCode(settings);
 
         // Ensure an array
         var files = (settings.name && settings.name.constructor === Array) ? settings.name : [settings.name];
@@ -127,7 +129,7 @@
      * When configured with mode: 'map', allows access to bundle values by specifying its key.
      * Eg, jQuery.i18n.prop('com.company.bundles.menu_add')
      */
-    $.i18n.prop = function (key /* Add parameters as function arguments as necessary  */) {
+    $.i18nGbif.prop = function (key /* Add parameters as function arguments as necessary  */) {
 
         var args = [].slice.call(arguments);
 
@@ -147,7 +149,7 @@
             }
         }
 
-        var value = (namespace) ? $.i18n.map[namespace][key] : $.i18n.map[key];
+        var value = (namespace) ? $.i18nGbif.map[namespace][key] : $.i18nGbif.map[key];
         if (value === null) {
             return '[' + ((namespace) ? namespace + '#' + key : key) + ']';
         }
@@ -262,9 +264,9 @@
 
             // Make the array the value for the entry.
             if (namespace) {
-                $.i18n.map[settings.namespace][key] = arr;
+                $.i18nGbif.map[settings.namespace][key] = arr;
             } else {
-                $.i18n.map[key] = arr;
+                $.i18nGbif.map[key] = arr;
             }
         }
 
@@ -402,9 +404,9 @@
                         }
                         // add to map
                         if (settings.namespace) {
-                            $.i18n.map[settings.namespace][name] = value;
+                            $.i18nGbif.map[settings.namespace][name] = value;
                         } else {
-                            $.i18n.map[name] = value;
+                            $.i18nGbif.map[name] = value;
                         }
                     }
 
@@ -473,7 +475,7 @@
     }
 
     /** Ensure language code is in the format aa_AA. */
-    $.i18n.normaliseLanguageCode = function (settings) {
+    $.i18nGbif.normaliseLanguageCode = function (settings) {
 
         var lang = settings.language;
         if (!lang || lang.length < 2) {

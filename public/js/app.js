@@ -293,6 +293,7 @@ require.register("js/i18n_menus.js", function(exports, require, module) {
 
 var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
+require('./jquery.i18n.properties.gbif');
 
 var _require = require('./i18n_init'),
     locale = _require.locale;
@@ -364,10 +365,11 @@ function i18n_menus() {
   var path = 'http://localhost:3333/i18n/';
 
   if (gbifesjs.isDevel) console.log('localePath: ' + path);
-  if (typeof jQuery.i18n === 'undefined') console.warn('jQuery.i18n not yet loaded');
+  if (typeof i18n === 'undefined') console.warn('i18n not yet loaded');
 
+  var i18n = $.i18nGbif;
   // https://github.com/jquery-i18n-properties/jquery-i18n-properties
-  jQuery.i18n.properties({
+  i18n.properties({
     name: 'messages',
     path: path,
     mode: 'map',
@@ -381,7 +383,7 @@ function i18n_menus() {
       var keys = ['main_title_label', 'menu_portal_part1', 'menu_portal_part2', 'menu_home', 'menu_collections', 'menu_datasets', 'menu_search', 'menu_explore', 'menu_regions', 'top_menu_dataportal', 'footer_menu_about', 'footer_menu_biodiversity_data', 'footer_menu_collaborations', 'footer_menu_resources', 'footer_menu_news', 'footer_menu_training', 'footer_menu_software', 'footer_menu_contact', 'numbers_occurrences_label', 'numbers_datasets_label', 'numbers_institutions_label', 'numbers_species_label', 'lang_link_en', 'lang_link_es', 'lang_link_cat', 'footer_legal_info', 'search_input_advanced1', 'search_input_advanced2', 'sub_menu_collections', 'sub_menu_collections_detail', 'sub_menu_datasets', 'sub_menu_datasets_detail', 'sub_menu_explore', 'sub_menu_explore_detail', 'sub_menu_regions', 'sub_menu_regions_detail', 'footer_legal_code', 'banner_search_input_placeholder', 'main_search_input_placeholder', 'auth_bar_login', 'auth_bar_logout', 'auth_bar_signup', 'auth_bar_myprofile', 'autocompleteHeader_placeholder'];
 
       for (var _i = 0; _i < keys.length; _i++) {
-        var trans = jQuery.i18n.prop(keys[_i]);
+        var trans = i18n.prop(keys[_i]);
         if (gbifesjs.isDevel) console.log('i18n of ' + keys[_i] + ': ' + trans);
         if (typeof trans !== 'undefined') {
           if (endsWith(keys[_i], '_placeholder')) {
@@ -401,9 +403,9 @@ function i18n_menus() {
         colorStyle: 'gbif',
         compactStyle: true,
         popupTitle: '',
-        popupText: jQuery.i18n.prop('cookie_message'),
-        buttonContinueTitle: jQuery.i18n.prop('cookie_accept_btn'),
-        buttonLearnmoreTitle: jQuery.i18n.prop('cookie_policy_btn'),
+        popupText: i18n.prop('cookie_message'),
+        buttonContinueTitle: i18n.prop('cookie_accept_btn'),
+        buttonLearnmoreTitle: i18n.prop('cookie_policy_btn'),
         buttonLearnmoreOpenInNewWindow: true,
         agreementExpiresInDays: 30,
         autoAcceptCookiePolicy: false,
@@ -414,14 +416,10 @@ function i18n_menus() {
 }
 
 // Warn, with min version fails so we load here
-/* $.getScript('/js/jquery.i18n.properties.min.js', function() {
- *   console.log('$.i18n loaded.');
- * });
- *  */
 $(function () {
   // wait til gbif.es elements are visible
   var checkExist = setInterval(function () {
-    if ($('#menu_home').length) {
+    if (window.jQuery && $('#menu_home').length && typeof $.i18nGbif !== 'undefined') {
       console.log("gbif_es_elements loaded");
       clearInterval(checkExist);
       i18n_menus();
@@ -697,7 +695,7 @@ require.register("js/jquery-eu-cookie-law-popup.js", function(exports, require, 
 })(jQuery);
 });
 
-require.register("js/jquery.i18n.properties.js", function(exports, require, module) {
+require.register("js/jquery.i18n.properties.gbif.js", function(exports, require, module) {
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -712,18 +710,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * @url         https://github.com/jquery-i18n-properties/jquery-i18n-properties
  * @inspiration Localisation assistance for jQuery (http://keith-wood.name/localisation.html)
  *              by Keith Wood (kbwood{at}iinet.com.au) June 2007
+ * Modified for gbif.es so is independent for jquery.i18n loaded by ALA modules so can be used
+ * without collisions
  *
  *****************************************************************************/
 
 (function ($) {
 
-    $.i18n = {};
+    $.i18nGbif = {};
 
     /**
      * Map holding bundle keys if mode is 'map' or 'both'. Values of this can also be an
      * Object, in which case the key is a namespace.
      */
-    $.i18n.map = {};
+    $.i18nGbif.map = {};
 
     var debug = function debug(message) {
         window.console && console.log('i18n::' + message);
@@ -743,7 +743,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      *      number of sites, such as: http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
      *
      * Sample usage for a bundles/Messages.properties bundle:
-     * $.i18n.properties({
+     * $.i18nGbif.properties({
      *      name:      'Messages',
      *      language:  'en_US',
      *      path:      'bundles'
@@ -757,7 +757,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @param  encoding  (string, optional) the encoding to request for bundles. Property file resource bundles are specified to be in ISO-8859-1 format. Defaults to UTF-8 for backward compatibility.
      * @param  callback     (function, optional) callback function to be called after script is terminated
      */
-    $.i18n.properties = function (settings) {
+    $.i18nGbif.properties = function (settings) {
 
         var defaults = {
             name: 'Messages',
@@ -777,7 +777,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (settings.namespace && typeof settings.namespace == 'string') {
             // A namespace has been supplied, initialise it.
             if (settings.namespace.match(/^[a-z]*$/)) {
-                $.i18n.map[settings.namespace] = {};
+                $.i18nGbif.map[settings.namespace] = {};
             } else {
                 debug('Namespaces can only be lower case letters, a - z');
                 settings.namespace = null;
@@ -788,7 +788,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (!settings.path.match(/\/$/)) settings.path += '/';
 
         // Try to ensure that we have at a least a two letter language code
-        settings.language = $.i18n.normaliseLanguageCode(settings);
+        settings.language = $.i18nGbif.normaliseLanguageCode(settings);
 
         // Ensure an array
         var files = settings.name && settings.name.constructor === Array ? settings.name : [settings.name];
@@ -831,7 +831,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * When configured with mode: 'map', allows access to bundle values by specifying its key.
      * Eg, jQuery.i18n.prop('com.company.bundles.menu_add')
      */
-    $.i18n.prop = function (key /* Add parameters as function arguments as necessary  */) {
+    $.i18nGbif.prop = function (key /* Add parameters as function arguments as necessary  */) {
 
         var args = [].slice.call(arguments);
 
@@ -851,7 +851,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }
         }
 
-        var value = namespace ? $.i18n.map[namespace][key] : $.i18n.map[key];
+        var value = namespace ? $.i18nGbif.map[namespace][key] : $.i18nGbif.map[key];
         if (value === null) {
             return '[' + (namespace ? namespace + '#' + key : key) + ']';
         }
@@ -968,9 +968,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             // Make the array the value for the entry.
             if (namespace) {
-                $.i18n.map[settings.namespace][key] = arr;
+                $.i18nGbif.map[settings.namespace][key] = arr;
             } else {
-                $.i18n.map[key] = arr;
+                $.i18nGbif.map[key] = arr;
             }
         }
 
@@ -1109,9 +1109,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                         }
                         // add to map
                         if (settings.namespace) {
-                            $.i18n.map[settings.namespace][name] = value;
+                            $.i18nGbif.map[settings.namespace][name] = value;
                         } else {
-                            $.i18n.map[name] = value;
+                            $.i18nGbif.map[name] = value;
                         }
                     }
 
@@ -1180,7 +1180,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 
     /** Ensure language code is in the format aa_AA. */
-    $.i18n.normaliseLanguageCode = function (settings) {
+    $.i18nGbif.normaliseLanguageCode = function (settings) {
 
         var lang = settings.language;
         if (!lang || lang.length < 2) {

@@ -32,12 +32,11 @@ exports.plugins = {
   copycat: {
     // just copy ALA default builded files to our build
     // These are loaded by ala-bootstrap3, so we need to load manunally in our development testPage
-    'js': 'commonui-bs3-2019/build/js/',
+    'js': [ 'commonui-bs3-2019/build/js/', 'app/js/jquery.i18n.properties.gbif.js' ],
     'css': 'commonui-bs3-2019/build/css/',
     'fonts': 'commonui-bs3-2019/build/fonts/',
-    'js': 'app/js/jquery.i18n.properties.js',
-    verbose : false, //shows each file that is copied to the destination directory
-    onlyChanged: true //only copy a file if it's modified time has changed (only effective when using brunch watch)
+    verbose : false, // shows each file that is copied to the destination directory
+    onlyChanged: true // only copy a file if it's modified time has changed (only effective when using brunch watch)
   },
   replacement: {
     replacements: [
