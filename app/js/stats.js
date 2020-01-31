@@ -1,4 +1,3 @@
-var $ = require('jquery');
 var { locale } = require('./i18n_init');
 var gbifesjs = require('./settings').default;
 

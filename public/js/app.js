@@ -291,10 +291,8 @@ require.register("js/i18n_menus.js", function(exports, require, module) {
  * Simple function to internationalise menus and sections of the home page.
  */
 
-var $ = require('jquery');
 var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
-require('./jquery.i18n.properties');
 
 var _require = require('./i18n_init'),
     locale = _require.locale,
@@ -1266,8 +1264,6 @@ exports.default = {
 ;require.register("js/stats.js", function(exports, require, module) {
 'use strict';
 
-var $ = require('jquery');
-
 var _require = require('./i18n_init'),
     locale = _require.locale;
 
@@ -1316,7 +1312,6 @@ document.addEventListener("DOMContentLoaded", function () {
 require.register("js/top-search.js", function(exports, require, module) {
 'use strict';
 
-var $ = require('jquery');
 var gbifesjs = require('./settings').default;
 
 var enableBieSearch = function enableBieSearch() {
@@ -1340,12 +1335,6 @@ $(function () {
 
 require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
   
-
-// Auto-loaded modules from config.npm.globals.
-window["$"] = require("jquery");
-window.jQuery = require("jquery");
-
-
 });})();require('___globals___');
 
 

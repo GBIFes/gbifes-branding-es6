@@ -1,4 +1,3 @@
-var $ = require('jquery');
 var gbifesjs = require('./settings').default;
 
 var enableBieSearch = () => {

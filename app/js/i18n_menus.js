@@ -2,11 +2,8 @@
  * Simple function to internationalise menus and sections of the home page.
  */
 
-var $ = require('jquery');
 var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
-require('./jquery.i18n.properties');
-
 var { locale, enabledLangs } = require('./i18n_init');
 
 // IE don't have String.endsWith
