@@ -5203,9 +5203,10 @@ button.top-search-icon {
 /* this -30px should be removed */
 .auth-nav {
   text-align: right;
-  min-height: 20px;
-  margin-bottom: -30px;
+  min-height: 0px;
+  /* margin-bottom: -30px; */
   border: 0px;
+  padding: 0px !important;
 }
 
 /* Top bar auth icons and btns */
