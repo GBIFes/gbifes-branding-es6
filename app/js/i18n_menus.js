@@ -4,7 +4,8 @@
 
 var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
-var { locale, enabledLangs } = require('./i18n_init');
+var { locale } = require('./i18n_init');
+var enabledLangs = gbifesjs.enabledLangs;
 
 // IE don't have String.endsWith
 // https://stackoverflow.com/a/2548133/642847
@@ -69,7 +70,7 @@ function i18n_menus() {
     }
   });
 
-  const path = `${gbifesjs.layoutUrl}i18n/`;
+  const path = `::headerFooterServer::/i18n/`;
 
   if (gbifesjs.isDevel) console.log(`localePath: ${path}`);
   if (typeof jQuery.i18n === 'undefined') console.warn('jQuery.i18n not yet loaded');

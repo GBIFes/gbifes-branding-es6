@@ -10,7 +10,7 @@ const header = fs.readFileSync('app/assets/head.html', 'utf8');
 const banner = fs.readFileSync('app/assets/banner.html', 'utf8');
 const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 
-const toReplace = [/index\.html$/, /testPage\.html$/];
+const toReplace = [/index\.html$/, /testPage\.html$/, /js\/app\.js/];
 
 exports.files = {
   javascripts: {

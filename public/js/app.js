@@ -225,7 +225,7 @@ var locale = window.gbiflocale;
 // https://github.com/Mikhus/domurl
 var currentUrl = new Url();
 
-var enabledLangs = ['es', 'en', 'ca'];
+var enabledLangs = gbifesjs.enabledLangs;
 
 console.log('Navigator languages locale: ' + parseLanguages(enabledLangs, 'es'));
 
@@ -295,13 +295,12 @@ var gbifesjs = require('./settings').default;
 require('./jquery-eu-cookie-law-popup');
 
 var _require = require('./i18n_init'),
-    locale = _require.locale,
-    enabledLangs = _require.enabledLangs;
+    locale = _require.locale;
+
+var enabledLangs = gbifesjs.enabledLangs;
 
 // IE don't have String.endsWith
 // https://stackoverflow.com/a/2548133/642847
-
-
 function endsWith(str, suffix) {
   return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
@@ -362,7 +361,7 @@ function i18n_menus() {
     }
   });
 
-  var path = gbifesjs.layoutUrl + 'i18n/';
+  var path = 'http://localhost:3333/i18n/';
 
   if (gbifesjs.isDevel) console.log('localePath: ' + path);
   if (typeof jQuery.i18n === 'undefined') console.warn('jQuery.i18n not yet loaded');
@@ -1248,15 +1247,14 @@ if (!_settings2.default.isDevel) {
 });
 
 ;require.register("js/settings.js", function(exports, require, module) {
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
   isDevel: true,
-  // FIXME remove this
-  layoutUrl: "https://demo.gbif.es/",
+  enabledLangs: ['es', 'en', 'ca'],
   sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17"
 };
 });

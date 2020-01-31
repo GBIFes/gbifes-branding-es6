@@ -30,7 +30,7 @@ var locale = window.gbiflocale;
 // https://github.com/Mikhus/domurl
 var currentUrl  = new Url;
 
-const enabledLangs = ['es', 'en', 'ca'];
+const enabledLangs = gbifesjs.enabledLangs;
 
 console.log(`Navigator languages locale: ${parseLanguages(enabledLangs, 'es')}`);
 
