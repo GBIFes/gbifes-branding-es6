@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migration.min.js"></script>
-    <script src="js/jquery.i18n.properties.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/autocomplete.min.js"></script>
@@ -69,7 +68,7 @@
              class="btn btn-outline-white btn-sm myProfileBtn" role="button"></a>
           <a href="https://auth.gbif.es/cas/login" class="btn btn-outline-white btn-sm loginBtn" id="auth_bar_login"></a>
           <a href="https://auth.gbif.es/cas/logout" class="btn btn-outline-white btn-sm logoutBtn" role="button" id="auth_bar_logout"></a>
-          <button id="top-search-icon-button-big" class="search-icon search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
+          <button id="top-search-icon-button-big" class="top-search-icon search-icon search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
                   data-toggle="collapse"
                   data-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
             <i class="fas fa-search"></i>
@@ -91,7 +90,7 @@
          class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Logout link">
         <i class="fas fa-sign-out"></i>
       </a>
-      <button id="top-search-icon-button-small" class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button search-icon" title="Open search dialog"
+      <button id="top-search-icon-button-small" class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button search-icon top-search-icon" title="Open search dialog"
               data-toggle="collapse" data-target="#autocompleteSearchALA"
               onclick="focusOnClickSearchButton()">
         <i class="fas fa-search"></i>
@@ -215,7 +214,7 @@
               <input id="autocompleteHeader" type="text" name="q"
                      placeholder="Search species, datasets, and more..." class="search-input"
                      autocomplete="off"/>
-              <button id="top-search-icon-button" class="search-submit search-icon" title="submit">
+              <button id="top-search-icon top-search-icon-button" class="search-submit search-icon" title="submit">
                 <i class="fas fa-search"></i>
               </button>
             </div>
@@ -249,6 +248,17 @@
                     pulls together biodiversity data from multiple sources, and makes it accessible and reusable.</h3>
             </article>
 
+            <div class="col-md-5">
+              <form class="listSearchForm">
+                <div class="input-group" id="searchLists">
+                  <input id="appendedInputButton" class="form-control" name="q" type="text" value="" placeholder="Search in list name, description or owner">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
             <article class="col-md-12" id="alaEditable">
                 <!-- Start editable content -->
                 <div class="col-md-3 col-md-push-9 sidebar-col" id="toc-wrapper">
@@ -267,7 +277,13 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div id="alaInnerEditable" class="col-md-8 col-md-pull-3" style="padding-left: 0px;"><h4 id="intro">
+                  <span class="pull-right">
+                    <a class="btn btn-primary" title="Add Species List" href="/speciesList/upload">Upload a list</a>
+                    <a class="btn btn-primary" title="My Lists" href="/speciesList/list">My Lists</a>
+                  </span>
                     <span id="Introduction">Introduction</span></h4>
                     <p>The ALA&nbsp;is Australia’s national biodiversity database. Founded on the principle of data
                         sharing – collect it once, share it, use it many times – the ALA provides free, online access to&nbsp;millions

@@ -362,12 +362,13 @@ function i18n_menus() {
     }
   });
 
-  var path = 'http://localhost:3333/i18n/';
+  var path = gbifesjs.i18nLocation;
 
   if (gbifesjs.isDevel) console.log('localePath: ' + path);
+  var i18n = $.i18nGbif;
+
   if (typeof i18n === 'undefined') console.warn('i18n not yet loaded');
 
-  var i18n = $.i18nGbif;
   // https://github.com/jquery-i18n-properties/jquery-i18n-properties
   i18n.properties({
     name: 'messages',
@@ -1255,6 +1256,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   isDevel: true,
   enabledLangs: ['es', 'en', 'ca'],
+  i18nLocation: 'https://datos.gbif.es/i18n/',
   sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17"
 };
 });

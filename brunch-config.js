@@ -10,7 +10,7 @@ const header = fs.readFileSync('app/assets/head.html', 'utf8');
 const banner = fs.readFileSync('app/assets/banner.html', 'utf8');
 const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 
-const toReplace = [/index\.html$/, /testPage\.html$/, /js\/app\.js/];
+const toReplace = [/index\.html$/, /testPage\.html$/];
 
 exports.files = {
   javascripts: {
@@ -31,9 +31,9 @@ exports.plugins = {
   babel: {presets: ['latest']},
   copycat: {
     // just copy ALA default builded files to our build
-    // These are loaded by ala-bootstrap3, so we need to load manunally in our development testPage
+    // These are loaded by ala-bootstrap3 library, so we need to load manunally in our development testPage
     'js': [ 'commonui-bs3-2019/build/js/', 'app/js/jquery.i18n.properties.gbif.js' ],
-    'css': 'commonui-bs3-2019/build/css/',
+    'css': [ 'commonui-bs3-2019/build/css/', 'app/custom-bootstrap' ],
     'fonts': 'commonui-bs3-2019/build/fonts/',
     verbose : false, // shows each file that is copied to the destination directory
     onlyChanged: true // only copy a file if it's modified time has changed (only effective when using brunch watch)
@@ -55,8 +55,8 @@ exports.plugins = {
 };
 
 exports.server = {
-  noPushState: true // returns 404 when file not found
-  // indexPath: 'testPage.html'
+  noPushState: true, // returns 404 when file not found
+  indexPath: 'testPage.html'
 }
 
 exports.paths = {

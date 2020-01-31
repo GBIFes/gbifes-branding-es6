@@ -28,6 +28,17 @@ BANNER_HERE
                     pulls together biodiversity data from multiple sources, and makes it accessible and reusable.</h3>
             </article>
 
+            <div class="col-md-5">
+              <form class="listSearchForm">
+                <div class="input-group" id="searchLists">
+                  <input id="appendedInputButton" class="form-control" name="q" type="text" value="" placeholder="Search in list name, description or owner">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
             <article class="col-md-12" id="alaEditable">
                 <!-- Start editable content -->
                 <div class="col-md-3 col-md-push-9 sidebar-col" id="toc-wrapper">
@@ -46,7 +57,13 @@ BANNER_HERE
                         </div>
                     </div>
                 </div>
+
+
                 <div id="alaInnerEditable" class="col-md-8 col-md-pull-3" style="padding-left: 0px;"><h4 id="intro">
+                  <span class="pull-right">
+                    <a class="btn btn-primary" title="Add Species List" href="/speciesList/upload">Upload a list</a>
+                    <a class="btn btn-primary" title="My Lists" href="/speciesList/list">My Lists</a>
+                  </span>
                     <span id="Introduction">Introduction</span></h4>
                     <p>The ALA&nbsp;is Australia’s national biodiversity database. Founded on the principle of data
                         sharing – collect it once, share it, use it many times – the ALA provides free, online access to&nbsp;millions

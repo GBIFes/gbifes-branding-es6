@@ -71,12 +71,13 @@ function i18n_menus() {
     }
   });
 
-  const path = `::headerFooterServer::/i18n/`;
+  const path = gbifesjs.i18nLocation;
 
   if (gbifesjs.isDevel) console.log(`localePath: ${path}`);
+  const i18n = $.i18nGbif;
+
   if (typeof i18n === 'undefined') console.warn('i18n not yet loaded');
 
-  const i18n = $.i18nGbif;
   // https://github.com/jquery-i18n-properties/jquery-i18n-properties
   i18n.properties({
     name: 'messages',
