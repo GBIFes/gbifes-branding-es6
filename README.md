@@ -6,7 +6,7 @@ The new GBIF.ES branding using https://brunch.io instead of gulp and using [ALA 
 
 ```
 # During development
-brunch watch --server
+brunch watchlis
 # or
 brunch build
 # or

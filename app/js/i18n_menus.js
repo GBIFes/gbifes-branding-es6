@@ -2,7 +2,7 @@
  * Simple function to internationalise menus and sections of the home page.
  */
 
-var gbifesjs = require('./settings').default;
+var gbifesjs = require('./settings');
 require('./jquery-eu-cookie-law-popup');
 require('./jquery.i18n.properties.gbif');
 var { locale } = require('./i18n_init');
@@ -71,7 +71,7 @@ function i18n_menus() {
     }
   });
 
-  const path = gbifesjs.i18nLocation;
+  const path = '$_LOCALES_URL/i18n/'
 
   if (gbifesjs.isDevel) console.log(`localePath: ${path}`);
   const i18n = $.i18nGbif;
