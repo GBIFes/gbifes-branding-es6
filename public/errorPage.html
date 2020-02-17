@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="es-ES">
-<head>
-  <meta charset="UTF-8"/>
-      <!-- ala dependencies (loaded by grails modules so in local html pages we need to load them -->
+  <head>
+    <meta charset="UTF-8"/>
+        <!-- ala dependencies (loaded by grails modules so in local html pages we need to load them -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/ala-styles.min.css">
@@ -17,7 +17,7 @@
     <script src="js/autocomplete.min.js"></script>
     <script src="js/application.min.js"></script>
 
-  <link rel="icon" href="https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png" sizes="32x32" />
+    <link rel="icon" href="https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png" sizes="32x32" />
 <link rel="icon" href="https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png" sizes="192x192" />
 <link rel="apple-touch-icon-precomposed" href="https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png" />
 
@@ -31,9 +31,9 @@
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- End Google Analytics -->
 
-</head>
-<body>
-<script
+  </head>
+  <body>
+    <script
   src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js"
   integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3"
   crossorigin="anonymous"></script>
@@ -235,102 +235,45 @@
 <!-- maintenance -->
 <div id="mante-container" style="display: none;" class="container"></div>
 
-<section id="breadcrumb">
-    <div class="container">
-        <div class="row">
-            <ul class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li class="active">Who we are</li>
-            </ul>
+    <script>require('js/settings').inMante=false;</script>
+    <div id="mante-container" class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="error-template">
+          <h1>
+            ¡Uuppps, vaya!</h1>
+          <h2>
+            Tenemos algún problema temporal en nuestros servicios.
+          </h2>
+          <div>
+            <p>
+              Perdonad las molestias, pero estamos intentando resolverlos lo más pronto posible. ¡Volvemos en breve!</p>
+            <p>
+              El equipo de GBIF.ES</p>
+          </div>
+          <div class="error-actions">
+            <a href="https://www.gbif.es" style="margin-top: 10px;" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-home">
+            </span>&nbsp;&nbsp;Ir a gbif.es</a>
+          </div>
         </div>
+      </div>
+      <div class="col-md-6">
+        <svg class="svg-box" width="380px" height="500px" viewbox="0 0 837 1045" version="1.1"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+            <path d="M353,9 L626.664028,170 L626.664028,487 L353,642 L79.3359724,487 L79.3359724,170 L353,9 Z" id="Polygon-1" stroke="#00e095" stroke-width="6" sketch:type="MSShapeGroup"></path>
+            <path d="M78.5,529 L147,569.186414 L147,648.311216 L78.5,687 L10,648.311216 L10,569.186414 L78.5,529 Z" id="Polygon-2" stroke="#00e095" stroke-width="6" sketch:type="MSShapeGroup"></path>
+            <path d="M773,186 L827,217.538705 L827,279.636651 L773,310 L719,279.636651 L719,217.538705 L773,186 Z" id="Polygon-3" stroke="#00e095" stroke-width="6" sketch:type="MSShapeGroup"></path>
+            <path d="M639,529 L773,607.846761 L773,763.091627 L639,839 L505,763.091627 L505,607.846761 L639,529 Z" id="Polygon-4" stroke="#00e095" stroke-width="6" sketch:type="MSShapeGroup"></path>
+            <path d="M281,801 L383,861.025276 L383,979.21169 L281,1037 L179,979.21169 L179,861.025276 L281,801 Z" id="Polygon-5" stroke="#00e095" stroke-width="6" sketch:type="MSShapeGroup"></path>
+          </g>
+        </svg>
+      </div>
     </div>
-</section>
-<div id="INSERT_CONTENT_ID_HERE" class="container">
-    <section class="content-container">
-        <div class="row">
-            <article class="col-md-12 header-wrap margin-bottom-half-1">
-                <h5 class="subject-category-overline">Knowledge Base</h5>
-                <h2 class="subject-title">Who we are</h2>
-                <h3 class="subject-subtitle">The Atlas of Living Australia (ALA) provides free, online access to
-                    information about Australia’s amazing biodiversity. It is collaborative, open infrastructure that
-                    pulls together biodiversity data from multiple sources, and makes it accessible and reusable.</h3>
-            </article>
-
-            <div class="col-md-5">
-              <form class="listSearchForm">
-                <div class="input-group" id="searchLists">
-                  <input id="appendedInputButton" class="form-control" name="q" type="text" value="" placeholder="Search in list name, description or owner">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">Search</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <article class="col-md-12" id="alaEditable">
-                <!-- Start editable content -->
-                <div class="col-md-3 col-md-push-9 sidebar-col" id="toc-wrapper">
-                    <div id="toc_container" class="no_bullets toc-floating-menu affix-bottom" data-spy="affix"
-                         data-offset-top="300"
-                         style="width: 245px; top: -264.5px;"><h4>Page contents:</h4>
-                        <div class="profile-usermenu margin-bottom-2">
-                            <ul class="toc_list nav">
-                                <li><a href="#Introduction">Introduction</a></li>
-                                <li><a href="#Our_mission">Our mission</a></li>
-                                <li><a href="#Our_focus">Our focus</a></li>
-                                <li><a href="#Our_users">Our users</a></li>
-                                <li><a href="#Our_impact">Our impact</a></li>
-                                <li><a href="#Governance">Governance</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="alaInnerEditable" class="col-md-8 col-md-pull-3" style="padding-left: 0px;"><h4 id="intro">
-                  <span class="pull-right">
-                    <a class="btn btn-primary" title="Add Species List" href="/speciesList/upload">Upload a list</a>
-                    <a class="btn btn-primary" title="My Lists" href="/speciesList/list">My Lists</a>
-                  </span>
-                    <span id="Introduction">Introduction</span></h4>
-                    <p>The ALA&nbsp;is Australia’s national biodiversity database. Founded on the principle of data
-                        sharing – collect it once, share it, use it many times – the ALA provides free, online access to&nbsp;millions
-                        of&nbsp;occurrence records&nbsp;to form&nbsp;the most&nbsp;comprehensive and accessible data set
-                        on Australia’s biodiversity ever produced.&nbsp; &nbsp;</p>
-                    <p>By aggregating biodiversity information and making it more available online, the ALA is assisting
-                        scientists, planners, managers and others to create a more detailed picture of Australia’s
-                        biodiversity.&nbsp;The ALA is used for research, environmental monitoring, conservation planning
-                        and management, education, and citizen science activities.</p><h4><span id="Our_mission">Our mission</span>
-                    </h4>
-                    <p>To lead the digital transformation of Australia’s biodiversity knowledge, promoting excellence
-                        and enabling collaboration in biodiversity research.</p><h4><span
-                            id="Our_focus">Our focus</span></h4>
-                    <p>The ALA pulls together two basic types of information about Australia’s living things: species
-                        and environments. We create tools for our users to share and analyse this data in different
-                        ways.</p>
-                    <p>We are committed to the principles of open data and infrastructure.</p><h4><span id="Our_users">Our users</span>
-                    </h4>
-                    <p>The ALA&nbsp;supports a wide range of users across a number of fields.&nbsp;We support research,
-                        environmental monitoring, conservation planning, education, and citizen science just to name a
-                        few.&nbsp;</p>
-                    <p>We create tools to help users capture, share and interrogate biodiversity information in
-                        increasingly efficient ways.</p><h4><span id="Our_impact">Our impact</span></h4>
-                    <p>By enabling science, industry and&nbsp;decision makers to work more efficiently, we impact many
-                        diverse areas of Australian biodiversity research and sustainability practice.</p>
-                    <p>We are an essential resource for biodiversity conservation, sustainable ecosystem development,
-                        new species discoveries, systematics (relationships between living things), taxonomy (naming and
-                        classification), digitisation of biological collections, natural resource management and
-                        environmental impact assessments.</p><h4><span id="Governance">Governance</span></h4>
-                    <p>The ALA is made possible thanks to contributions from our many partners. The ALA&nbsp;receives
-                        support&nbsp;from the Australian Government through the National Collaborative Research
-                        Infrastructure Strategy (NCRIS) and is hosted by CSIRO. It is a node of the Global Biodiversity
-                        Infrastructure Facility (GBIF).</p></div>
-                <!-- End editable content -->
-            </article>
-        </div>
-    </section>
-</div>
-<!-- Footer -->
+    </div>
+    </div>
+    <!-- Footer -->
 <footer id="colophon" class="site-footer">
   <div class="footer-container">
     <div class="container">
@@ -409,5 +352,5 @@
 <!-- .site-footer -->
 <!-- End footer -->
 
-</body>
+  </body>
 </html>

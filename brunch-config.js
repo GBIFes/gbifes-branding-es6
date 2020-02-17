@@ -10,7 +10,10 @@ const header = fs.readFileSync('app/assets/head.html', 'utf8');
 const banner = fs.readFileSync('app/assets/banner.html', 'utf8');
 const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 
-const toReplace = [/index\.html$/, /testPage\.html$/];
+const toReplace = [/index\.html$/,
+                   /testPage\.html$/,
+                   /errorPage\.html$/
+];
 
 exports.files = {
   javascripts: {
@@ -29,6 +32,13 @@ exports.files = {
 exports.plugins = {
   // TODO add eslint
   babel: {presets: ['latest']},
+  // This do some var substition in code also:
+  jscc: {
+    values: {
+      _BUILD: `${process.env.NODE_ENV} - ${new Date().toISOString().replace('T', ' ').substr(0, 16)}`,
+      _LOCALES_URL: process.env.NODE_ENV === 'development' ? 'http://localhost:3333': settings.baseFooterUrl
+    }
+  },
   copycat: {
     // just copy ALA default builded files to our build
     // These are loaded by ala-bootstrap3 library, so we need to load manually in our development testPage
@@ -48,18 +58,12 @@ exports.plugins = {
       { files: toReplace, match: { find: '::headerFooterServer::', replace:
                                    process.env.NODE_ENV === 'development' ?
                                    'http://localhost:3333':
-                                   settings.mainLAUrl }},
+                                   settings.baseFooterUrl }},
       { files: toReplace, match: { find: '::loginStatus::', replace: 'signedOut'}},
       { files: toReplace, match: { find: '::loginURL::', replace: 'https://auth.gbif.es/cas/login' }},
       { files: toReplace, match: { find: '::searchServer::', replace: 'https://especies.gbif.es' }},
       { files: toReplace, match: { find: '::searchPath::', replace: '/search' }}
     ]
-  },
-  // This do some var substition in code also:
-  jscc: {
-    values: {
-      _LOCALES_URL: process.env.NODE_ENV === 'development' ? 'http://localhost:3333': settings.mainLAUrl
-    }
   },
   // https://www.npmjs.com/package/brunch-browser-sync
   browserSync: {

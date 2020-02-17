@@ -1,25 +1,37 @@
-import gbifesjs from './settings.js';
+var gbifesjs = require('./settings');
+var { locale } = require('./i18n_init');
+var Cookies = require('js-cookie');
+
+var user = Cookies.get('ALA-Auth');
 
 if (!gbifesjs.isDevel) {
   Sentry.init({ dsn: gbifesjs.sentryUrl });
-  window.onload = function () {
-    $( document ).ready(function() {
-      // https://stackoverflow.com/questions/35722717/use-sentrys-raven-js-to-collect-all-http-errors
-      // https://docs.sentry.io/clients/javascript/tips/#jquery-ajax-error-reporting
-      $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError) {
-        if (window.Raven) {
-	  Raven.captureMessage(thrownError || jqXHR.statusText, {
-	    extra: {
-	      type: ajaxSettings.type,
-	      url: ajaxSettings.url,
-	      data: ajaxSettings.data,
-	      status: jqXHR.status,
-	      error: thrownError || jqXHR.statusText,
-	      response: jqXHR.responseText.substring(0, 100)
-	    }
-          });
-        }
-      });
-    });
-  }
+  console.log('Sentry configured');}
+
+
+var user = Cookies.get('ALA-Auth', { domain: 'gbif.es', path: '/' });
+
+if (typeof user !== 'undefined') {
+  Sentry.configureScope(function(scope) {
+    scope.setUser({"email": user});
+    console.log('Sentry setting email scope');
+  })
+} else {
+  console.log('Cannot set sentry email scope');
 }
+
+Sentry.configureScope(function(scope) {
+  scope.setTag("page_locale", locale);
+  console.log('Sentry setting lang scope');
+});
+
+const buildInfo = '$_BUILD';
+
+console.log(`Build info: ${buildInfo}`);
+
+Sentry.configureScope(function(scope) {
+  scope.setExtra("gbif-es-build", buildInfo);
+});
+
+
+// Sentry.captureMessage('Pro pro probando probando');

@@ -5,6 +5,7 @@ require('./collectory.js');
 require('./sentry.js');
 require('./stats.js');
 require('./i18n_menus.js');
+require('./mante.js');
 
 // THIS should be added to testPage:
 // require('./application.js');
