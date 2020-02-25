@@ -1,0 +1,5 @@
+#export CROWDIN_BASE_PATH=/home/ubuntu/crowdin
+export CROWDIN_BASE_PATH=$PWD
+crowdin download --language ca
+crowdin download --language es-ES
+crowdin upload sources
