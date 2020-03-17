@@ -1352,6 +1352,11 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
+countup.js@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.3.tgz#8b5fc824c20ad38e7dd0298e5647bf468d104519"
+  integrity sha512-EO2l2tTn6Wizms0KDtdH2SMoIgCrn/ueWY6HIsQT8ia2y6lOR4r6diTD3/G5NaIad9AFmwF1cedgZV/8MocFPA==
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
