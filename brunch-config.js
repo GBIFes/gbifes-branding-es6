@@ -59,7 +59,6 @@ exports.plugins = {
                                    process.env.NODE_ENV === 'development' ?
                                    'http://localhost:3333':
                                    settings.baseFooterUrl }},
-      { files: toReplace, match: { find: '::loginStatus::', replace: 'signedOut'}},
       { files: toReplace, match: { find: '::loginURL::', replace: 'https://auth.gbif.es/cas/login' }},
       { files: toReplace, match: { find: '::searchServer::', replace: 'https://especies.gbif.es' }},
       { files: toReplace, match: { find: '::searchPath::', replace: '/search' }}

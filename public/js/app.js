@@ -431,6 +431,58 @@ $(function () {
 });
 });
 
+require.register("js/index-auth.js", function(exports, require, module) {
+'use strict';
+
+var Cookies = require('js-cookie');
+var settings = require('./settings');
+var authCookieName = 'ALA-Auth';
+var loginClass = 'signedIn';
+var logoutClass = 'signedOut';
+
+var mainDrawerLoginStatusInIndex = function mainDrawerLoginStatusInIndex() {
+  if (document.location.host === "datos.gbif.es" || document.location.host === "demo.gbif.es" || document.location.host === 'localhost:3333') {
+    if (settings.isDevel) console.log("We are in the main url, let's see if we are authenticated");
+    // As this page is plain html, we have to detect if with are authenticated via Cookies
+    // NOTE: For make this work you need ala.cookie.httpOnly to false in /data/cas/config/application.yml
+    // We should use another way to see if it's authenticated
+
+    var authCookie = Cookies.get(authCookieName, { domain: settings.mainDomain, path: '/' });
+    var in30Minutes = 1 / 48;
+
+    if (typeof authCookie === 'undefined' && document.location.host === 'localhost:3333') {
+      console.log("We set a test cookie if we are in development");
+      Cookies.set(authCookieName, '/', { expires: in30Minutes });
+    }
+
+    if (typeof authCookie !== 'undefined') {
+      // https://github.com/AtlasOfLivingAustralia/ala-bootstrap3/blob/master/grails-app/taglib/au/org/ala/bootstrap3/HeaderFooterTagLib.groovy
+      if (settings.isDevel) console.log("Auth cookie present so logged in");
+      $("#navbarOuterWrapper > div > div").removeClass("::loginStatus::").addClass("signedIn");
+      $("#navbarSmallOuterWrapper").removeClass("::loginStatus::").addClass("signedIn");
+    } else {
+      if (settings.isDevel) console.log("No auth cookie not present so not-logged in");
+      $("#navbarOuterWrapper > div > div").removeClass("::loginStatus:").addClass("signedOut");
+      $("#navbarSmallOuterWrapper").removeClass("::loginStatus:").addClass("signedOut");
+    }
+  } else {
+    if (settings.isDevel) console.log("We aren't in the main url");
+  }
+};
+
+$(function () {
+  // wait til drawer elements are visible
+  var checkExist = setInterval(function () {
+    if (window.jQuery && $('#navbarOuterWrapper').length) {
+      clearInterval(checkExist);
+      mainDrawerLoginStatusInIndex();
+    } else {
+      if (settings.isDevel) console.log("nav not loaded");
+    }
+  }, 1000);
+});
+});
+
 require.register("js/init.js", function(exports, require, module) {
 'use strict';
 
@@ -442,6 +494,7 @@ require('./sentry.js');
 require('./stats.js');
 require('./i18n_menus.js');
 require('./mante.js');
+require('./index-auth.js');
 
 // THIS should be added to testPage:
 // require('./application.js');
@@ -1265,7 +1318,7 @@ Sentry.configureScope(function (scope) {
   console.log('Sentry setting lang scope');
 });
 
-var buildInfo = 'development - 2020-03-16 19:08';
+var buildInfo = 'development - 2020-03-19 15:44';
 
 console.log('Build info: ' + buildInfo);
 
@@ -1276,14 +1329,49 @@ Sentry.configureScope(function (scope) {
 // Sentry.captureMessage('Pro pro probando probando');
 });
 
-require.register("js/settings.js", function(exports, require, module) {
+require.register("js/settings-demo.js", function(exports, require, module) {
 'use strict';
 
 module.exports = {
   isDevel: true,
   inMante: false,
   enabledLangs: ['es', 'en', 'ca'],
+  mainLAUrl: 'https://demo.gbif.es/',
+  mainDomain: 'gbif.es', // used for cookies (without http/https)
+  baseFooterUrl: 'https://demo.gbif.es/brand-2020-brunch/',
+  sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17",
+  services: {
+    collectory: { url: 'https://colecciones.gbif.es', title: 'Collections' },
+    biocache: { url: 'https://registros.gbif.es', title: 'Occurrence records' },
+    biocacheService: { url: 'https://registros-ws.gbif.es', title: 'Occurrence records webservice' },
+    bie: { url: 'https://especies.gbif.es', title: 'Species' },
+    regions: { url: 'https://regiones.gbif.es', title: 'Regions' },
+    lists: { url: 'https://listas.gbif.es', title: 'Species List' },
+    spatial: { url: 'https://espacial.gbif.es', title: 'Spatial Portal' },
+    images: { url: 'https://imagenes.gbif.es', title: 'Images Service' },
+    collectoryDIS: { url: 'https://demo.gbif.es/collections', title: 'Collections' },
+    biocacheDIS: { url: 'https://demo.gbif.es/ala-hub', title: 'Occurrence records' },
+    biocacheServiceDIS: { url: 'https://demo.gbif.es/biocache-service', title: 'Occurrence records webservice' },
+    bieDIS: { url: 'https://demo.gbif.es/ala-bie', title: 'Species' },
+    regionsDIS: { url: 'https://demo.gbif.es/bie-index', title: 'Regions' },
+    listsDIS: { url: 'https://demo.gbif.es/specieslists', title: 'Species List' },
+    spatialDIS: { url: 'https://espacial.gbif.es', title: 'Spatial Portal' },
+    imagesDIS: { url: 'https://demo.gbif.es/dimages', title: 'Images Service' },
+    cas: { url: 'https://auth.gbif.es', title: 'CAS' }
+  },
+  otherLinks: [{ title: 'Datasets', url: 'https://demo.gbif.es/collectory/datasets' }, { title: 'Explore your area', url: 'http://demo.gbif.es/ala-hub/explore/your-area/' }, { title: 'Datasets', url: 'https://demo.gbif.es/collectory/datasets' }, { title: 'twitter', url: 'https://twitter.com/GbifEs', icon: 'twitter' }]
+};
+});
+
+;require.register("js/settings-prod.js", function(exports, require, module) {
+'use strict';
+
+module.exports = {
+  isDevel: false,
+  inMante: false,
+  enabledLangs: ['es', 'en', 'ca'],
   mainLAUrl: 'https://datos.gbif.es/',
+  mainDomain: 'gbif.es', // used for cookies (without http/https)
   baseFooterUrl: 'https://datos.gbif.es/brand-2020-brunch/',
   sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17",
   services: {
@@ -1298,6 +1386,40 @@ module.exports = {
     cas: { url: 'https://auth.gbif.es', title: 'CAS' }
   },
   otherLinks: [{ title: 'Datasets', url: 'https://colecciones.gbif.es/datasets' }, { title: 'Explore your area', url: 'http://registros.gbif.es/explore/your-area/' }, { title: 'Datasets', url: 'https://colecciones.gbif.es/datasets' }, { title: 'twitter', url: 'https://twitter.com/GbifEs', icon: 'twitter' }]
+};
+});
+
+;require.register("js/settings.js", function(exports, require, module) {
+'use strict';
+
+module.exports = {
+  isDevel: true,
+  inMante: false,
+  enabledLangs: ['es', 'en', 'ca'],
+  mainLAUrl: 'https://demo.gbif.es/',
+  mainDomain: 'gbif.es', // used for cookies (without http/https)
+  baseFooterUrl: 'https://demo.gbif.es/brand-2020-brunch/',
+  sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17",
+  services: {
+    collectory: { url: 'https://colecciones.gbif.es', title: 'Collections' },
+    biocache: { url: 'https://registros.gbif.es', title: 'Occurrence records' },
+    biocacheService: { url: 'https://registros-ws.gbif.es', title: 'Occurrence records webservice' },
+    bie: { url: 'https://especies.gbif.es', title: 'Species' },
+    regions: { url: 'https://regiones.gbif.es', title: 'Regions' },
+    lists: { url: 'https://listas.gbif.es', title: 'Species List' },
+    spatial: { url: 'https://espacial.gbif.es', title: 'Spatial Portal' },
+    images: { url: 'https://imagenes.gbif.es', title: 'Images Service' },
+    collectoryDIS: { url: 'https://demo.gbif.es/collections', title: 'Collections' },
+    biocacheDIS: { url: 'https://demo.gbif.es/ala-hub', title: 'Occurrence records' },
+    biocacheServiceDIS: { url: 'https://demo.gbif.es/biocache-service', title: 'Occurrence records webservice' },
+    bieDIS: { url: 'https://demo.gbif.es/ala-bie', title: 'Species' },
+    regionsDIS: { url: 'https://demo.gbif.es/bie-index', title: 'Regions' },
+    listsDIS: { url: 'https://demo.gbif.es/specieslists', title: 'Species List' },
+    spatialDIS: { url: 'https://espacial.gbif.es', title: 'Spatial Portal' },
+    imagesDIS: { url: 'https://demo.gbif.es/dimages', title: 'Images Service' },
+    cas: { url: 'https://auth.gbif.es', title: 'CAS' }
+  },
+  otherLinks: [{ title: 'Datasets', url: 'https://demo.gbif.es/collectory/datasets' }, { title: 'Explore your area', url: 'http://demo.gbif.es/ala-hub/explore/your-area/' }, { title: 'Datasets', url: 'https://demo.gbif.es/collectory/datasets' }, { title: 'twitter', url: 'https://twitter.com/GbifEs', icon: 'twitter' }]
 };
 });
 
@@ -1359,7 +1481,10 @@ var loadStats = function loadStats() {
 
 document.addEventListener("DOMContentLoaded", function () {
   if (document.location.host === 'datos.gbif.es' || document.location.host === 'demo.gbif.es' || document.location.host === 'localhost:3333' || settings.isDevel) {
+    console.log('Loading stats');
     loadStats();
+  } else {
+    console.log('Not loading stats');
   }
 });
 });
@@ -1375,7 +1500,7 @@ var enableBieSearch = function enableBieSearch() {
   // Maybe better:
   // if (/^datos.gbif.es/.test(window.location.host)) {
 
-  if (document.location.host !== 'datos.gbif.es' && document.location.host !== 'auth.gbif.es'
+  if (document.location.host !== 'datos.gbif.es' && document.location.host !== 'demo.gbif.es' && document.location.host !== 'auth.gbif.es'
   // Is useful also
   // &&  document.location.host !== 'especies.gbif.es'
   ) {

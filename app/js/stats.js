@@ -47,6 +47,9 @@ var loadStats = () => {
 document.addEventListener("DOMContentLoaded", () => {
   if (document.location.host === 'datos.gbif.es' || document.location.host === 'demo.gbif.es' || document.location.host === 'localhost:3333'
       || settings.isDevel ) {
+    console.log('Loading stats');
     loadStats();
+  } else {
+        console.log('Not loading stats');
   }
 });
