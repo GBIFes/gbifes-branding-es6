@@ -11,6 +11,7 @@ module.exports = {
     biocache: { url: 'https://registros.gbif.es', title: 'Occurrence records' },
     biocacheService: { url: 'https://registros-ws.gbif.es', title: 'Occurrence records webservice' },
     bie: { url: 'https://especies.gbif.es', title: 'Species' },
+    bieService: { url: 'https://especies-ws.gbif.es', title: 'Species webservice' },
     regions: { url: 'https://regiones.gbif.es', title: 'Regions' },
     lists: { url: 'https://listas.gbif.es', title: 'Species List' },
     spatial: { url: 'https://espacial.gbif.es', title: 'Spatial Portal' },
