@@ -25,6 +25,7 @@ function parseLanguages(acceptedLangs, defaultLang = false) {
   return match;
 }
 
+var cookieLang = 'datos-gbif-es-lang';
 var locale = window.gbiflocale;
 
 // https://github.com/Mikhus/domurl
@@ -42,7 +43,7 @@ function i18n_init() {
   if (gbifesjs.isDevel) console.log(`Lang locale: ${locale}`);
 
   if (typeof locale === 'undefined') {
-    locale = Cookies.get('datos-gbif-es-lang')
+    locale = Cookies.get(cookieLang)
   }
 
   if (gbifesjs.isDevel) console.log(`Initial locale: ${locale}`);
@@ -64,10 +65,10 @@ function i18n_init() {
 
   if (gbifesjs.isDevel) console.log(`End locale: ${locale}`);
 
-  // localhost
-  Cookies.set('datos-gbif-es-lang', locale, { expires: 365, path: '/'});
+  // Try only to set upper cookie
+  Cookies.remove(cookieLang, { path: '/'});
   // try this
-  Cookies.set('datos-gbif-es-lang', locale, { expires: 365, path: '/', domain: '.gbif.es' });
+  Cookies.set(cookieLang, locale, { expires: 365, path: '/', domain: '.gbif.es' });
 
 }
 
