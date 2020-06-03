@@ -10,8 +10,6 @@ p.rowA .eventAndLocation .resultsLabel { padding-left: 8px;  }
 p.rowB .catalognumber:before{ content: ' '; display: block; }
 p.rowB .basisofrecord { float:right; }
 
-#speciesTabContent #exploreButtonsZone #downloadRecords { display: none; }
-
 .tab-content {
   border-bottom: 1px solid #ddd !important;
   border-right: 1px solid #ddd !important;
@@ -23,8 +21,6 @@ p.rowB .basisofrecord { float:right; }
 #advancedSearchLink { padding-bottom: 5px; }
 
 .nav-collections #usage-stats { display: none; }
-
-#alertsButton { display:none; }
 
 .modal-dialog { width: 740px; }
 
