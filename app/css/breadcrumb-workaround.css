@@ -1,0 +1,7 @@
+#breadcrumb > div > div > nav > ol > li:nth-child(1) > a {
+  display: none;
+}
+
+#breadcrumb > div > div > nav > ol > li:nth-child(1):before {
+  content: 'Inicio';
+}
