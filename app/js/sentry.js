@@ -4,7 +4,7 @@ var Cookies = require("js-cookie");
 
 var user = Cookies.get("ALA-Auth");
 
-if (Sentry != null) {
+if (typeof Sentry !== "undefined") {
   if (!gbifesjs.isDevel) {
     Sentry.init({ dsn: gbifesjs.sentryUrl });
     console.log("Sentry configured");
