@@ -31,7 +31,7 @@ exports.files = {
 
 exports.plugins = {
   // TODO add eslint
-  babel: {presets: ['latest']},
+  babel: {presets: ['env']},
   // This do some var substition in code also:
   jscc: {
     values: {
@@ -42,7 +42,7 @@ exports.plugins = {
   copycat: {
     // just copy ALA default builded files to our build
     // These are loaded by ala-bootstrap3 library, so we need to load manually in our development testPage
-    'js': [ 'commonui-bs3-2019/build/js/', 'app/js/jquery.i18n.properties.gbif.js' ],
+    'js': [ 'commonui-bs3-2019/build/js/', 'app/js/jquery.i18n.properties.gbif.js', 'app/js/stats-job.js', 'app/js/settings.js' ],
     'css': [ 'commonui-bs3-2019/build/css/', 'app/custom-bootstrap' ],
     'fonts': 'commonui-bs3-2019/build/fonts/',
     verbose : false, // shows each file that is copied to the destination directory
@@ -82,4 +82,10 @@ exports.paths = {
   watched: ['app/js', 'app/css', 'app/assets']
 }
 
+exports.conventions = {
+  // file won't be compiled and will be just moved to public directory instead
+  ignored: [
+    "app/js/stats-job.js"
+  ]
+};
 // exports.optimize = true; // same like brunch build --production

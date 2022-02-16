@@ -1,9 +1,7 @@
 var settings = require('./settings');
 var { locale } = require('./i18n_init');
 var { CountUp } = require('countup.js');
-
-var collectory = settings.services.collectory.url;
-var biocacheService = settings.services.biocacheService.url;
+const base = "$_LOCALES_URL/";
 
 var setCounter = (id, val, onEnd) => {
   const options = {
@@ -24,23 +22,16 @@ var setCounter = (id, val, onEnd) => {
   }
 };
 
-// If you want to show collections stats:
-// `${collectory}/ws/dataResource/count`
-
 var loadStats = () => {
-  $.getJSON(`${biocacheService}/occurrences`, (data) => {
-    setCounter('number_registros', data.totalRecords, () =>
-      $.getJSON(`${collectory}/ws/dataResource/count`, (data) => {
-        setCounter('number_bases', data.total, () =>
-          $.getJSON(`${collectory}/ws/institution/count`, (data) => {
-            setCounter('number_instituciones', data.total);
-          })
+  $.getJSON(`${base}/stats.json`, (data) => {
+    console.info(`Stats loaded: ${JSON.stringify(data)}`);
+    setCounter('number_registros', data.records, () =>
+      setCounter('number_bases', data.drs, () =>
+        setCounter('number_instituciones', data.institutions, () =>
+          setCounter("number_species", data.species)
         )
-      })
-    )});
-  // Right now this is slow so we put here
-  $.getJSON(`${biocacheService}/occurrence/facets?q=*:*&facets=species&pageSize=0`, (data) => {
-    setCounter("number_species", data[0].count);
+      )
+    );
   });
 }
 
@@ -50,6 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('Loading stats');
     loadStats();
   } else {
-        console.log('Not loading stats');
+    console.log('Not loading stats');
   }
 });
