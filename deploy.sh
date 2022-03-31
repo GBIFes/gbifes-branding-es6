@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+ NODE_PATH=~/.npm-packages/lib/node_modules/ node app/js/stats-job.js > app/assets/stats.json
 cp app/js/settings-demo.js app/js/settings.js
 brunch build --production
 rsync -a --delete public/ demo.gbif.es:/srv/demo.gbif.es/www/brand-2020-brunch/
