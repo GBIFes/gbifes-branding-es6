@@ -3537,7 +3537,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
 .buscador {
     position: relative;
 }
-.buscador input[type=search] {
+.buscador input[type=text] {
     border: 2px solid #36de97;
     padding: 40px 30px;
     margin: 0;
