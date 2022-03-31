@@ -16,17 +16,15 @@ BANNER_HERE
       </div>
       <section class="banner_numbers container">
 	<div class="buscador">
-	  <div class="container">
-	    <form action="https://registros.gbif.es/advancedSearch" method="get">
+	    <div class="container">
+          <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm" action="https://registros.gbif.es/occurrences/search" method="GET">
 	      <a class="hiddenmobile"
 			id="advanced_search_link"
 			href="https://registros.gbif.es/#tab_advanceSearch">
 		<span id="search_input_advanced1">Búsqueda</span><br/>
 		<span id="search_input_advanced2">Avanzada</span>
 	      </a>
-	      <input type="search" id="main_search_input"
-			   placeholder=""
-			   name="text">
+        <input type="text" class="main_search_input" name="taxa" placeholder="Buscar en el portal de datos" id="taxa" autocomplete="off">
 	      <input type="submit" name="submit" class="search-submit" id="main_search_submit">
 	    </form>
 
@@ -134,7 +132,7 @@ FOOTER_HERE
     border-bottom: none !important;
   }
 
-  #main_search_input {
+  .main_search_input {
     width: 100%;
     line-height: 1em;
     top: 55%;
