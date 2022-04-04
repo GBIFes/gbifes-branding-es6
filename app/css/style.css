@@ -481,7 +481,7 @@ header#masthead #topheader .langbox {
     right: 15px;
     width: 130px;
     height: 68px;
-    background: url(https://www.gbif.es/wp-content/themes/gbif/images/lang-bg.svg) no-repeat;
+    background: url(::headerFooterServer::/images/lang-bg.svg) no-repeat;
     background-size: 100%}
 header#masthead #topheader .langbox ul {
     text-align: center;

@@ -12,6 +12,12 @@ const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 
 const toReplace = [/index\.html$/,
                    /testPage\.html$/,
+                   /app\.css$/,
+                   /style\-www\.css$/,
+                   /cas\-custom\.css$/,
+                   /footer\.html$/,
+                   /banner\.html$/,
+                   /head\.html$/,
                    /errorPage\.html$/
 ];
 

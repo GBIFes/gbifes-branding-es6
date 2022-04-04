@@ -1,5 +1,5 @@
 .logo-brand > .brand-layout-control > .img-responsive {
-  content:url("https://www.gbif.es/wp-content/uploads/2017/05/favicon-gbif.png") !important;
+  content:url("::headerFooterServer::/images/favicon-gbif.png") !important;
 }
 
 /* TODO: do this in code */
