@@ -10,7 +10,8 @@
     "domurl": "^2.3.0",
     "git-digest-brunch": "^1.0.3",
     "js-cookie": "^2.2.1",
-    "jscc-brunch": "^2.10.0"
+    "jscc-brunch": "^2.10.0",
+    "url-polyfill": "^1.1.12"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",
