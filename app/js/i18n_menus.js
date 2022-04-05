@@ -36,7 +36,7 @@ function i18n_menus() {
     });
   }
 
-  const url = window.location.href;
+  const currentUrl = window.location.href;
 
   if (gbifesjs.isDevel) console.log(`Enabled langs: ${enabledLangs}`);
 
@@ -45,18 +45,8 @@ function i18n_menus() {
     const curlang = enabledLangs[i];
     const $link = $(`.${curlang}-locale-link`); // or grab it by tagname etc
 
-    let localeUrl = url;
-
-    if (url.indexOf('lang=') !== -1) {
-      localeUrl = url.replace(/lang=en|lang=es|lang=ca/gi, `lang=${curlang}`);
-    } else if (url.indexOf('?') !== -1) {
-      localeUrl = `${localeUrl}&lang=${curlang}`;
-    } else {
-      const uri = url.split('#')[0];
-      let hash = url.split('#')[1];
-      hash = typeof hash === 'undefined' ? '' : `#${hash}`;
-      localeUrl = `${uri}?lang=${curlang}${hash}`;
-    }
+    let localeUrl = new URL(currentUrl);
+    localeUrl.searchParams.set('lang', curlang);
     $link.attr('href', localeUrl);
     if (gbifesjs.isDevel) console.log(`Added lang to href: ${$link.attr('href')}`);
   }
