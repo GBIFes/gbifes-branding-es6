@@ -7,7 +7,7 @@ require('./stats.js');
 require('./i18n_menus.js');
 require('./mante.js');
 require('./index-auth.js');
-require('./autocomplete-conf.js');
+// require('./autocomplete-conf.js');
 require('./disable-spatial-buttons.js');
 require('url-polyfill');
 
