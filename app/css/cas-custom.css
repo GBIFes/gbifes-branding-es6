@@ -12,3 +12,13 @@
 {
   display: none;
 }
+
+.btn-GitHub, .btn-google {
+  color: #fff; 
+  background-color: #36de97;
+  border-color: rgba(0,0,0,0.2);
+}
+
+#list-providers > a.btn.btn-block.btn-social > span {
+  margin-left: 10px;
+}
