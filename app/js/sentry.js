@@ -1,3 +1,4 @@
+var Sentry = require("@sentry/browser");
 var gbifesjs = require("./settings");
 var { locale } = require("./i18n_init");
 var Cookies = require("js-cookie");
@@ -28,13 +29,16 @@ if (typeof Sentry !== "undefined") {
 
   const buildInfo = "$_BUILD";
 
-  console.log(`Build info: ${buildInfo}`);
+  console.log(`sentry build info: ${buildInfo}`);
 
   Sentry.configureScope(function (scope) {
     scope.setExtra("gbif-es-build", buildInfo);
   });
+
+  // Sentry test
+  // myUndefinedFunction();
 } else {
   console.log("Cannot use sentry, maybe is blocked");
 }
 
-// Sentry.captureMessage('Pro pro probando probando');
+

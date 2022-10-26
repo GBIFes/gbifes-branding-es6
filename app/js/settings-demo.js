@@ -5,7 +5,7 @@ module.exports = {
   mainLAUrl: 'https://demo.gbif.es/',
   mainDomain: 'gbif.es', // used for cookies (without http/https)
   baseFooterUrl: 'https://demo.gbif.es/brand-2020-brunch/',
-  sentryUrl: "https://e8b7082a5d2f4d659690e56438f6015c@sentry.comunes.org/17",
+  sentryUrl: "https://a769ac65ea144535bfe30afcbc431ef4@sentry.comunes.org/2",
   services: {
     collectory: { url: 'https://colecciones.gbif.es', title: 'Collections' },
     biocache: { url: 'https://registros.gbif.es', title: 'Occurrence records' },

@@ -4,6 +4,7 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "@sentry/browser": "^6.19.6",
     "babel-preset-env": "^1.7.0",
     "browser-sync-brunch": "^0.0.9",
     "countup.js": "2.0.3",
