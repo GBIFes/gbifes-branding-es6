@@ -135,6 +135,7 @@ function i18n_menus() {
             const elementID = keys[i].substring(0, keys[i].length - 12);
             // verify that this element exists
             $(`#${elementID}`) && $(`#${elementID}`).attr('placeholder', trans);
+            $(`.${elementID}`) && $(`.${elementID}`).attr('placeholder', trans);
           } else {
             // verify that this element exists
             $(`#${keys[i]}`) && $(`#${keys[i]}`).html(trans);
