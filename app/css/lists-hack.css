@@ -1,0 +1,4 @@
+#speciesListTable td:nth-child(6),
+#speciesListTable th:nth-child(6) {
+    display: none;
+}
