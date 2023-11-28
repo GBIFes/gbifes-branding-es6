@@ -9,7 +9,7 @@ const getJSON = bent('json')
 
 let loadStats = async () => {
   let stats = {};
-  let data = await getJSON(`${biocacheService}/occurrences`);
+  let data = await getJSON(`${biocacheService}/occurrences/search`);
   stats["records"] = data.totalRecords;
   data = await getJSON(`${collectory}/ws/dataResource/count`);
   stats["drs"] = data.total;
