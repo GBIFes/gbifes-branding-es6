@@ -85,6 +85,8 @@ function i18n_menus() {
         'menu_portal_part1',
         'menu_portal_part2',
         'menu_home',
+        'menu_about',
+        'menu_about_page',
         'menu_collections',
         'menu_datasets',
         'menu_search',
@@ -157,6 +159,10 @@ function i18n_menus() {
         autoAcceptCookiePolicy : false,
         htmlMarkup : null
       });
+
+    var aboutPageUrl = i18n.prop('menu_about_page');
+    
+    $('#menu_about').attr('href', aboutPageUrl);
     }
   });
 }

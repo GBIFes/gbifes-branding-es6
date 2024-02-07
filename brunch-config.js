@@ -12,6 +12,8 @@ const footer = fs.readFileSync('app/assets/footer.html', 'utf8');
 
 const toReplace = [/index\.html$/,
                    /testPage\.html$/,
+                   /about\.html$/,
+                   /acerca\.html$/,
                    /app\.css$/,
                    /style\-www\.css$/,
                    /cas\-custom\.css$/,
@@ -72,7 +74,7 @@ exports.plugins = {
   },
   // https://www.npmjs.com/package/brunch-browser-sync
   browserSync: {
-    port: 3333,
+    port: 3334,
     open: false // Don't open a browser tab on each modification
   }
   // Also:
