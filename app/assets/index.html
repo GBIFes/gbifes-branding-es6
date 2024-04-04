@@ -15,16 +15,19 @@ BANNER_HERE
 	<h1 id="main_title_label"></h1>
       </div>
       <section class="banner_numbers container">
+
+
+
 	<div class="buscador">
 	    <div class="container">
-          <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm" action="https://registros.gbif.es/occurrences/search" method="GET">
+          <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm" action="https://especies.gbif.es/search" method="GET">
 	      <a class="hiddenmobile"
 			id="advanced_search_link"
 			href="https://registros.gbif.es/#tab_advanceSearch">
 		<span id="search_input_advanced1">Búsqueda</span><br/>
 		<span id="search_input_advanced2">Avanzada</span>
 	      </a>
-        <input type="text" class="main_search_input" name="taxa" id="taxa" autocomplete="off">
+        <input type="text" class="main_search_input" name="q" id="q" autocomplete="off">
 	      <input type="submit" name="submit" class="search-submit" id="main_search_submit">
 	    </form>
 
