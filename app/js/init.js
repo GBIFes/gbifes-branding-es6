@@ -9,6 +9,7 @@ require('./mante.js');
 require('./index-auth.js');
 // require('./autocomplete-conf.js');
 require('./disable-spatial-buttons.js');
+require('./image-legend-workaround.js');
 require('url-polyfill');
 
 // THIS should be added to testPage:

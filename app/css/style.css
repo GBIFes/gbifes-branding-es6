@@ -355,8 +355,6 @@ header#masthead #topheader .site-branding #site_logo {
 }
 header#masthead #topheader .site-branding #site_logo img {
     max-width: 150px;
-    width: 148px;
-    height: 32px;
 }
 header#masthead #topheader .head-links ul {
     margin: 0;
@@ -910,8 +908,6 @@ footer .logo-footer {
 }
 footer .logo-footer img {
     max-width: 150px;
-    width: 148px;
-    height: 32px;
 }
 footer nav {
     display: table-cell;
