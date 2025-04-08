@@ -5300,3 +5300,16 @@ button.top-search-icon {
 #wrapper-navbar .navbar i {
   color: #3a67a1;
 }
+
+.fa-span {
+  display: inline-block;
+  font-size: inherit;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.fa-svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
